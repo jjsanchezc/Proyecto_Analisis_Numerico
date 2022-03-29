@@ -1,6 +1,7 @@
 import http
+import matlab
 from django.shortcuts import render
-from django.http import HttpResponse
+from metodos.metodosNumericos import ConnectPyMat as pm
 
 # Create your views here.
 def home(request):
@@ -9,4 +10,5 @@ def home(request):
 def busIncr(request):
     if request.method=="POST":
         print("entraaaaaaa")
+        pm.busIncr(matlab.double(-2),matlab.double(0.5),matlab.double(4))
     return render(request,'metodos/busquedasIncr.html')

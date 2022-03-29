@@ -1,7 +1,9 @@
 <h1>Pagina de Busquedas Incrementales</h1>
 
-<form>
-    <input>
+<form method="POST" name="busIncr">
+    {% csrf_token %}
+    <input >
+    <button type="SUBMIT">Calcular</button>
 </form>
 <form method ="GET" action="/">
     <button href="home.html">menu</button>
