@@ -10,3 +10,9 @@ def busIncr(x0,delta,niter):#mas tarde defino los parametros
     print(eng.busquedasIncr(x0,delta,niter))
     print ("aca va el calculo final de la busqueda")
     eng.quit()
+
+def bisecc(xi,xs,Tol,niter):
+    eng=matlab.engine.start_matlab()
+    print(eng.biseccion(xi,xs,Tol,niter))
+    print("------------------------")
+    eng.quit()
