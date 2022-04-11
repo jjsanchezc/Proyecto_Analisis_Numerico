@@ -12,6 +12,11 @@ A DJANGO, COMO POR EJEMPLO, COMO HACEMOS LO DE LOS
 INPUTS
 %}
 function [s,E,fm] = biseccion(xi,xs,Tol,niter)
+    xi=str2double(xi);
+    xs=str2double(xs);
+    Tol=str2double(Tol);
+    niter=str2double(niter);
+    
     syms x
         f(x)=exp(2-6*x)*cos(x^2-3*x)+4*x-3;
         fi=eval(subs(f,xi));

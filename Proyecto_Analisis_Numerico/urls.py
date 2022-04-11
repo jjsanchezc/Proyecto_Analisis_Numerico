@@ -21,5 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.home),
     path('busquedas-incrementales/',views.busIncr),
-    path('biseccion/',views.bisec)
+    path('biseccion/',views.bisec),
+    path('calcular/',views.calcular),
 ]

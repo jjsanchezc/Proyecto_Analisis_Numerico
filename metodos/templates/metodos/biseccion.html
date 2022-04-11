@@ -1,8 +1,13 @@
 <h1>Pagina de Biseccion</h1>
 
-<form method="POST" name="bisecc">
+<form method="POST" name="bisecc" cols="5" rows="1">
     {% csrf_token %}
-    <input >
+    <tr>
+    <input name="xi">xi
+</tr>   
+    <input name="xs">xs
+    <input name="Tol">Tol
+    <input name="niter">nIter
     <button type="SUBMIT">Calcular</button>
 </form>
 <form method ="GET" action="/">

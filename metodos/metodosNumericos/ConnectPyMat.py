@@ -1,5 +1,4 @@
 import matlab.engine
-from numpy import double
 eng = matlab.engine.start_matlab()
 
 
@@ -11,6 +10,6 @@ def busIncr(x0,delta,niter):#mas tarde defino los parametros
     eng.quit()
 
 def bisecc(xi,xs,Tol,niter):
-    eng2=eng
-    print(eng2.biseccion(xi,xs,Tol,niter))
+    print("Respuesta: ")
+    print(eng.biseccion(xi,xs,Tol,niter))
     print("------------------------")

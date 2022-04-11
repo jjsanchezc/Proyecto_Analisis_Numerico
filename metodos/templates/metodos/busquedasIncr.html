@@ -1,9 +1,12 @@
 <h1>Pagina de Busquedas Incrementales</h1>
 
-<form method="POST" name="busIncr">
+<form method="POST" name="busIncr"action="/calcular/">
     {% csrf_token %}
-    <input >
-    <button type="SUBMIT">Calcular</button>
+    <input name="x0">x0
+    <input name="delta">Delta
+    <input name="niter">Numero de Iteraciones
+    <input name="fun">Función
+    <button type="SUBMIT" >Calcular</button>
 </form>
 <form method ="GET" action="/">
     <button href="home.html">Menu Principal</button>

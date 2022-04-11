@@ -1,8 +1,9 @@
 %busquedas incrementales: se ingresa el valor inicial de x (x0), el tamaño de paso(Delta) y el màximo nùmero de iteraciones (niter) 
 
-function [s] = busquedaIncr(x0,Delta,niter)%aca le podemos poner un parametro de string para poder ingresar la ecuacion
+function [s] = busquedasIncr(x0,Delta,niter)
+    %aca le podemos poner un parametro de string para poder ingresar la ecuacion
+    fprintf("entra en el de la busquedas incrementales");
     syms f(x)
-    %f(x)=exp(2-6*x)*cos(x^2-3*x)+4*x-3;
     f(x)=cos(x)-x^2;
     f0=f(x0);
     if f==0
