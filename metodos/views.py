@@ -34,6 +34,7 @@ def bisec(request):
         print("entra en biseccion")
         try:
             pm.bisecc("-2","1","0.0005","4") #cambiar esto con los datos que se ingresen
+            #hola pauli
         except:
             print("error f")
     else:
