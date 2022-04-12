@@ -33,7 +33,7 @@ def bisec(request):
     if xi!='' and xs!='' and  Tol!='' and  niter!='':
         print("entra en biseccion")
         try:
-            pm.bisecc("rrrr","1","0.0005","4")
+            pm.bisecc("-2","1","0.0005","4") #cambiar esto con los datos que ponga el usuario
         except:
             print("error f")
     else:
