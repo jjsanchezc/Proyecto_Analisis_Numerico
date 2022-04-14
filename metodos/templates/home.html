@@ -1,8 +1,19 @@
-<h1>PAGINA PARA ANALISIS NUMERICO</h1>
-<h2>seleccione el metodo que quiera usar</h2>
-<form method ="GET" action="busquedas-incrementales/">
-    <button href="metodos/busquedasIncr.html">Busquedas Incrementales</button>
-</form>
-<form method ="GET" action="biseccion/">
-    <button href="metodos/biseccion.html">Biseccion (ESTA)</button>
-</form>
+{% extends "base.html" %}
+
+{% block titulo %} Inicio {% endblock %}
+
+{% block contenido %} 
+
+    <div class="p-5 bg-light">
+        <div class="container">
+            <h1 class="display-3">Análisis numérico</h1>
+            <p class="lead">Esta página web fue hecha para el curso Análisis numérico con el fin de mostrar y aplicar los conceptos que vimos a lo largo del curso.</p>
+            <hr class="my-2">
+            <!--<p>More info</p>-->
+            <!--<p class="lead">
+              <a class="btn btn-primary btn-lg" href="Jumbo action link" role="button">Jumbo action name</a>
+            </p>-->
+        </div>
+    </div>
+
+{% endblock %}
