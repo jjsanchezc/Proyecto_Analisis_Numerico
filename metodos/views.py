@@ -7,12 +7,11 @@ from metodos.metodosNumericos import ConnectPyMat as pm
 def home(request):
     return render(request,'home.html')
 
-def busIncr(request):
+def metodosLineal(request):
+    return render(request,'metodosLineal.html')
 
-    if request.method=="POST":
-        print("entraaaaaaa")
-        pm.busIncr(-2,0.5,4)
-    return render(request,'metodos/busquedasIncr.html')
+def ecuaciones(request):
+    return render(request,'ecuaciones.html')
 
 def bisec(request):
     """Metodo para leer los datos introducidos por el usuario y luego llamar al
@@ -26,11 +25,11 @@ def bisec(request):
     """
     
     msg=None
-    xi=request.POST.get('xi')
-    xs=request.POST.get('xs')
+    Xi=request.POST.get('Xi')
+    Xs=request.POST.get('Xs')
     Tol=request.POST.get('Tol')
-    niter=request.POST.get('niter')
-    if xi!='' and xs!='' and  Tol!='' and  niter!='':
+    nIter=request.POST.get('nIter')
+    if Xi!='' and Xs!='' and  Tol!='' and  nIter!='':
         print("entra en biseccion")
         try:
             pm.bisecc("-2","1","0.0005","4") #cambiar esto con los datos que se ingresen
@@ -39,7 +38,17 @@ def bisec(request):
             print("error f")
     else:
         msg="dejaste un espacio vacioooooo"
-    return render(request,'metodos/biseccion.html')
+    return render(request,'metodosLineales/biseccion.html')
+
+def busIncr(request):
+
+    if request.method=="POST":
+        print("entraaaaaaa")
+        pm.busIncr(-2,0.5,4)
+    return render(request,'metodosLineales/busquedasIncr.html')
+
+def newton(request):
+    return render(request, 'metodosLineales/newton.html')
 
 def calcular(request):
     if request.method=="POST":
@@ -52,5 +61,9 @@ def calcular(request):
         pm.busIncr(x0,delta,niter)
     #except ValueError:
         print("hubo un error de value")
-        print(f"x0: {x0} \ndelta: {delta}\nniter:{niter}")
-    return render(request, 'metodos/busquedasIncr.html')
+        print(f"x0: {x0} \ndelta: {delta}\niter:{niter}")
+    return render(request, 'metodosLineales/busquedasIncr.html')
+
+
+
+ 
