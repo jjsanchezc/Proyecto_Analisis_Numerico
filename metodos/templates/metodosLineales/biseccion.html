@@ -1,37 +1,41 @@
+{% extends "base.html" %}
+{% block titulo %} Biseccion {% endblock titulo %}
 
+{% block contenido %} 
 <h1>Pagina de Bisección</h1>
 
-<form enctype="multipart/form-data" method="post"> 
+<form enctype="multipart/form-data" method="POST"> 
     {% csrf_token %}
  
     <div class="mb-3">
-        <label for="" class="form-label">Xi:</label>
+        <label for="" class="form-label">X_inferior:</label>
         
         <input type="text"
-        class="form-control" name= "" id="" aria-describedby="helpId" placeholder="valor inicial">
+        class="form-control" name= "Xi" id="Xi" aria-describedby="helpId" placeholder="valor inicial">
     </div>
 
     <div class="mb-3">
-        <label for="" class="form-label">Xs:</label>
+        <label for="" class="form-label">X_superior:</label>
         
         <input type="text"
-        class="form-control" name= "" id="" aria-describedby="helpId" placeholder="valor n">
+        class="form-control" name= "Xs" id="Xs" aria-describedby="helpId" placeholder="valor n">
     </div>
 
     <div class="mb-3">
-        <label for="" class="form-label">Tol:</label>
+        <label for="" class="form-label">Tolerancia:</label>
         
         <input type="text"
-        class="form-control" name= "" id="" aria-describedby="helpId" placeholder="Tolerancia">
+        class="form-control" name= "Tol" id="Tol" aria-describedby="helpId" placeholder="Tolerancia">
     </div>
 
     <div class="mb-3">
-        <label for="" class="form-label">nIter:</label>
+        {% csrf_token %}
+        <label for="" class="form-label">Numero Iteraciones:</label>
 
         <input type="text"
-        class="form-control" name= "" id="" aria-describedby="helpId" placeholder=" # iteraciones">
+        class="form-control" name= "nIter" id="nIter" aria-describedby="helpId" placeholder=" # iteraciones">
     </div>
-    <button type="SUBMIT">Calcular</button>
+    <button type="SUBMIT" role="button" href="{% url 'biseccion' %}">Calcular</button>
 </form>
  <!--  
     <tr>
@@ -43,7 +47,10 @@
     
 </form>
 --> 
-<form method ="GET" action="/">
-    <button href="home.html">Menu Principal</button>
 
-</form>
+
+{% if msg %}
+    <p>{{ msg }}</p>
+    {% else %}
+    {% endif %}
+{% endblock contenido %}

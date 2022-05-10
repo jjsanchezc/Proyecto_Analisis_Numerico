@@ -5,10 +5,12 @@ from metodos.metodosNumericos import ConnectPyMat as pm
 
 # Create your views here.
 def home(request):
+    #metodo para ir a la pantalla home
     return render(request,'home.html')
 
-def metodosLineal(request):
-    return render(request,'metodosLineal.html')
+def metodosLineales(request):
+    #metodo para ir a la pantalla de definicion de metodos
+    return render(request,'metodosLineales.html')
 
 def ecuaciones(request):
     return render(request,'ecuaciones.html')
@@ -16,53 +18,28 @@ def ecuaciones(request):
 def bisec(request):
     """Metodo para leer los datos introducidos por el usuario y luego llamar al
     metodo ConnectPyMat
-
-    Args:
-        request : cuando lo llamen
-
-    Returns:
-        render: pagina de busquedasIncr
     """
-    
+    print('entraaaaaa')
     msg=None
-    Xi=request.POST.get('Xi')
-    Xs=request.POST.get('Xs')
-    Tol=request.POST.get('Tol')
-    nIter=request.POST.get('nIter')
-    if Xi!='' and Xs!='' and  Tol!='' and  nIter!='':
-        print("entra en biseccion")
-        try:
-            pm.bisecc("-2","1","0.0005","4") #cambiar esto con los datos que se ingresen
-            #hola pauli
-        except:
-            print("error f")
-    else:
-        msg="dejaste un espacio vacioooooo"
-    return render(request,'metodosLineales/biseccion.html')
-
-def busIncr(request):
-
     if request.method=="POST":
-        print("entraaaaaaa")
-        pm.busIncr(-2,0.5,4)
-    return render(request,'metodosLineales/busquedasIncr.html')
+        Xi=request.POST.get('Xi')
+        Xs=request.POST.get('Xs')
+        Tol=request.POST.get('Tol')
+        nIter=request.POST.get('nIter')
+        if Xi!='' and Xs!='' and  Tol!='' and  nIter!='':
+            print(Xs)
+            print(Xi)
+            try:
+                print(type(pm.bisecc(Xi,Xs,Tol,nIter))) 
+                msg=pm.bisecc(Xi,Xs,Tol,nIter)
+            except:
+                print("error f")
+        else:
+            msg="dejaste un espacio vacio"
+            print('Espacio vacio')
+    print('pagina normal')
+    return render(request,'metodosLineales/biseccion.html',{'msg':msg})
 
-def newton(request):
-    return render(request, 'metodosLineales/newton.html')
-
-def calcular(request):
-    if request.method=="POST":
-        x0=0
-        x0=request.POST.get('x0')
-        delta=request.POST.get('delta')
-        niter=request.POST.get('niter')
-        print(type(niter),"este es el tipo de dato de")
-      #  try:
-        pm.busIncr(x0,delta,niter)
-    #except ValueError:
-        print("hubo un error de value")
-        print(f"x0: {x0} \ndelta: {delta}\niter:{niter}")
-    return render(request, 'metodosLineales/busquedasIncr.html')
 
 
 
