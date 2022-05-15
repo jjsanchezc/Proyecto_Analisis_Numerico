@@ -19,7 +19,9 @@ def bisec(request):
     """Metodo para leer los datos introducidos por el usuario y luego llamar al
     metodo ConnectPyMat
     """
-    print('entraaaaaa')
+    print(request.get_full_path())
+    if request.get_full_path()=='/metodosLineales/biseccion' :
+        print('este es el request de biseccccccion')
     msg=None
     if request.method=="POST":
         Xi=request.POST.get('Xi')
@@ -41,6 +43,20 @@ def bisec(request):
     return render(request,'metodosLineales/biseccion.html',{'msg':msg})
 
 
+def calculo(request):
+    """este metodo va a ser llamado por cada metodo
+    con el if se define que tipo de metodo es, va a recibir cada parte y lo va a calcular
+    se debe de ir definiendo cada uno 
+    debe retornar el valor
+    este va a ser el metodo que puede 
 
+    Args:
+        request (_type_): _description_
+    """
+    msg=None
+    print(request.get_full_path())
+    if request.get_full_path()=='/metodosLineales/biseccion' :
+        print('este es el request de biseccccccion')
+    pass
 
  
