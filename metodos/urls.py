@@ -22,5 +22,4 @@ path('SOR/',views.SOR, name= "SOR"),
 path('vandermonde/',views.vandermonde, name= "vandermonde"),
 path('spline/',views.spline, name= "spline"),
 path('newtonIn/',views.newtonIn, name= "newtonIn"),
-path('newtonOr/',views.newtonOr, name= "newtonOr"),
 ]

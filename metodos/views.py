@@ -86,8 +86,6 @@ def spline(request):
 def newtonIn(request):
     return render(request, 'interpolacion/newtonIn.html')
 
-def newtonOr(request):
-    return render(request, 'interpolacion/newtonOr.html')
 
 def calcular(request):
     if request.method=="POST":
