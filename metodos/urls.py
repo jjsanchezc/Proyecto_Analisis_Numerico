@@ -15,4 +15,9 @@ path('puntoFijo/',views.puntoFijo, name= "puntoFijo"),
 path('reglaFalsa/',views.reglaFalsa, name= "reglaFalsa"),
 path('secante/',views.secante, name= "secante"),
 path('raicesMult/',views.raicesMult, name= "raicesMult"),
+path('gauss/',views.gauss, name= "gauss"),
+path('Jacobi/',views.jacobi, name= "jacobi"),
+path('gaussSeidel/',views.gaussSeidel, name= "gaussSeidel"),
+path('SOR/',views.SOR, name= "SOR"),
+
 ]

@@ -62,6 +62,18 @@ def secante(request):
 def raicesMult(request):
     return render(request, 'metodosNoLineal/raicesMult.html')
 
+def gauss(request):
+    return render(request, 'sistemaDeEcua/gauss.html')
+
+def jacobi(request):
+    return render(request, 'sistemaDeEcua/jacobi.html')
+
+def gaussSeidel(request):
+    return render(request, 'sistemaDeEcua/gaussSeidel.html')
+
+def SOR(request):
+    return render(request, 'sistemaDeEcua/SOR.html')
+
 def calcular(request):
     if request.method=="POST":
         x0=0

@@ -33,20 +33,18 @@
           </li>
           <li><a href="{% url 'sistemaDeEcua' %}">Sistema de ecuaciones</a>
             <ul class="menu-vertical">
-              <li><a href="#">Gauss</a> </li>
-              <li><a href="#">Gauss parcial</a> </li>
-              <li><a href="#">Gauss total</a> </li>
-              <li><a href="#">Jacobi</a> </li>
-              <li><a href="#">Gauss Seidel</a> </li>
-              <li><a href="#">SOR</a> </li>
+              <li><a href="{% url 'gauss' %}">Gauss</a> </li>
+              <li><a href="{% url 'jacobi' %}">Jacobi</a> </li>
+              <li><a href="{% url 'gaussSeidel' %}">Gauss Seidel</a> </li>
+              <li><a href="{% url 'SOR' %}">SOR</a> </li>
             </ul>
           </li>
           <li><a href="#">Interpolación</a>
             <ul class="menu-vertical">
               <li><a href="#">Vandermonde</a> </li>
               <li><a href="#">Inter Newton</a> </li>
-              <li><a href="#">Spline lineal</a> </li>
-              <li><a href="#">Spline cúbico</a> </li>
+              <li><a href="#">Spline</a> </li>
+
             </ul>
           </li>
         </ul>
