@@ -86,6 +86,11 @@ def SOR(x0,A,b,Tol,niter,w):
     print("Respuesta: ")
     print(eng.SOR(x0,A,b,Tol,niter,w))
     print("------------------------")  
+
+def Spline(x,y,d):
+    print("Respuesta: ")
+    print(eng.Spline(x,y,d))
+    print("------------------------")  
 #acaba interpolacion
 
 
