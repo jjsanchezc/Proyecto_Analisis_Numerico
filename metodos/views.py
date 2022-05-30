@@ -7,11 +7,11 @@ from metodos.metodosNumericos import ConnectPyMat as pm
 def home(request):
     return render(request,'home.html')
 
-def metodosLineal(request):
-    return render(request,'metodosLineal.html')
+def metodosNoLineal(request):
+    return render(request,'metodosNoLineal.html')
 
-def ecuaciones(request):
-    return render(request,'ecuaciones.html')
+def sistemaDeEcua(request):
+    return render(request,'sistemaDeEcua.html')
 
 def bisec(request):
     """Metodo para leer los datos introducidos por el usuario y luego llamar al
@@ -38,17 +38,29 @@ def bisec(request):
             print("error f")
     else:
         msg="dejaste un espacio vacioooooo"
-    return render(request,'metodosLineales/biseccion.html')
+    return render(request,'metodosNoLineal/biseccion.html')
 
 def busIncr(request):
 
     if request.method=="POST":
         print("entraaaaaaa")
         pm.busIncr(-2,0.5,4)
-    return render(request,'metodosLineales/busquedasIncr.html')
+    return render(request,'metodosNoLineal/busquedasIncr.html')
 
 def newton(request):
-    return render(request, 'metodosLineales/newton.html')
+    return render(request, 'metodosNoLineal/newton.html')
+
+def puntoFijo(request):
+    return render(request, 'metodosNoLineal/puntoFijo.html')
+
+def reglaFalsa(request):
+    return render(request, 'metodosNoLineal/reglaFalsa.html')
+
+def secante(request):
+    return render(request, 'metodosNoLineal/secante.html')
+
+def raicesMult(request):
+    return render(request, 'metodosNoLineal/raicesMult.html')
 
 def calcular(request):
     if request.method=="POST":
@@ -62,7 +74,7 @@ def calcular(request):
     #except ValueError:
         print("hubo un error de value")
         print(f"x0: {x0} \ndelta: {delta}\niter:{niter}")
-    return render(request, 'metodosLineales/busquedasIncr.html')
+    return render(request, 'metodosNoLineal/busquedasIncr.html')
 
 
 
