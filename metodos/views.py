@@ -66,6 +66,18 @@ def gaussSeidel(request):
 def SOR(request):
     return render(request, 'sistemaDeEcua/SOR.html')
 
+def vandermonde(request):
+    return render(request, 'interpolacion/vandermonde.html')
+
+def spline(request):
+    return render(request, 'interpolacion/spline.html')
+
+def newtonIn(request):
+    return render(request, 'interpolacion/newtonIn.html')
+
+def newtonOr(request):
+    return render(request, 'interpolacion/newtonOr.html')
+
 def calcular(request):
     if request.method=="POST":
         x0=0
