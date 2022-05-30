@@ -1,39 +1,58 @@
-% Una implementación del método de la secante para búsqueda de raices en
-% funciones continuas dentro de un intervalo.
-%
-% Por Gerardo Tinoco Guerrero
-% 
-% Ejemplo:
-% Ejecutar las siguientes lineas dentro de la ventana de comandos:
-%
-% ff = @(x)(x.^2-4)
-% x = secante(ff, 1, 5, 0.0001);
-%
-% Se buscará la raíz de la función (x^2)-4 tomando como puntos iniciales para
-% el método de la secante a = 2 y b = 5, con una tolerancia tol = 0.0001.
-
-function xs = secante(fun,a,b,tol)
-fprintf('Método de la secante\n\n');
-i = 1;
-fa = feval(fun, a);
-fb = feval(fun, b);
-xs = b - ((b - a) / (fb - fa))*fb;
-error = abs(b - a);
-
-fprintf('Iter. \t \t a \t \t b \t Xs \t \t f(X) \t \t Error\n');
-fprintf('%2i \t %f \t %f \t %f \t %f \n', i, a, b, xs,feval(fun,xs));
-
-
-while error >= tol
-    b = a;
-    a = xs;
-    fb = feval(fun,b);
-    fa = feval(fun,a);
-    xs = b - ((b - a)/(fb - fa))*fb;
-    error = abs(b - a);
-    i = i + 1;
-   fprintf('%2i \t %f \t %f \t %f \t %f \t %f \n', i, a, b, xs,feval(fun,xs),error);
+function [s,xn,n,fn,E] = Secante(f,xo)
+syms x
+f = input("Ingrese la funcion f: ");
+x0 = input("Ingrese el valor de x0: ");
+x1 = input("Ingrese el valor de x1: ");
+niter = input("Ingrese el numero maximo de iteraciones: ");
+Tol = input("Ingrese el valor de la tolerancia: ");
+c=0;
+xn1(c+1)=x1;
+xn0(c+1)=x0;
+xn1=xn1(c+1);
+xn0=xn0(c+1);
+fn(c+1) = eval(subs(f,xn1));
+fm(c+1) = eval(subs(f,xn0));
+fe= fn(c+1);
+fd= fm(c+1);
+E(c+1) = Tol+1;
+error= E(c+1);
+N(c+1)=c; 
+while error >= Tol && c<niter && fe~=0
+    xn(c+2)= xn1-((fe*(xn1-xn0))/(fe-fd));
+    fn(c+2) = eval(subs(f,xn(c+2)));
+    fm(c+2) = eval(subs(f,xn1));
+    fe = fn(c+2);
+    fd = fm(c+2);
+    E(c+2) = abs(xn(c+2)-xn1);
+    xn0=xn1;
+    error=E(c+2);
+    xn1=xn(c+2);
+    N(c+2)=(c+1);
+    c=c+1;
 end
-w = feval(fun,xs);
-fprintf('\n La mejor aproximación a la raiz tomando una tolerancia de %f es \n x = %f con \n f(x)= %f\n y se realizaron %i iteraciones\n',tol, xs, w, i);
+if fe==0;
+    s=xn1;
+    n=c;
+    fprintf('%f es raiz de f(x) \n',xn1)
+    disp('      n        X1          F          E')
+            D= [N' xn' fn' E'];
+            disp(D)
+            elseif error<Tol
+           s=xn1;
+           n=c;
+           fprintf('%f es una aproximación de una raiz de f(x) con una tolerancia= %f \n',xn1,Tol)
+            disp('      n        X1          F          E')
+            D= [N' xn' fn' E'];
+            disp(D)
+elseif fn-fm==0
+       s=xn1;
+       n=c;
+       fprintf('%f es una posible raiz múltiple de f(x) \n',xn1)
+else 
+   s=xn1;
+   n=c;
+   fprintf('Fracasó en %f iteraciones \n',niter) 
 end
+        
+end
+    

@@ -1,3 +1,4 @@
+function [E,s] = Seidel(A,b,x,itera,tole)
 A = input('Ingresar la matriz A: ');%ingrese la matriz de coeficientes
 b = input('Ingresar el Termino independiente b: ');%Ingrese el termino independiente
 x = input('Ingresar el valor inicial para x0: ');%Ingrese un valor inicial para x0

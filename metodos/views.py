@@ -14,26 +14,18 @@ def sistemaDeEcua(request):
     return render(request,'sistemaDeEcua.html')
 
 def bisec(request):
-    """Metodo para leer los datos introducidos por el usuario y luego llamar al
-    metodo ConnectPyMat
-
-    Args:
-        request : cuando lo llamen
-
-    Returns:
-        render: pagina de busquedasIncr
-    """
-    
+    print(request.POST)
     msg=None
     Xi=request.POST.get('Xi')
     Xs=request.POST.get('Xs')
     Tol=request.POST.get('Tol')
     nIter=request.POST.get('nIter')
-    if Xi!='' and Xs!='' and  Tol!='' and  nIter!='':
+    fun=request.POST.get('Fun')
+    err=request.POST.get('err')
+    if Xi!=None or Xi!=None and Xs!=None and  Tol!=None and  nIter!=None and fun!=None and err!=None :
         print("entra en biseccion")
         try:
-            pm.bisecc("-2","1","0.0005","4") #cambiar esto con los datos que se ingresen
-            #hola pauli
+            pm.bisecc(Xi,Xs,Tol,nIter,fun,err)
         except:
             print("error f")
     else:
