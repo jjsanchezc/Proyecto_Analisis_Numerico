@@ -41,9 +41,15 @@
           </li>
           <li><a href="#">Interpolación</a>
             <ul class="menu-vertical">
-              <li><a href="#">Vandermonde</a> </li>
-              <li><a href="#">Inter Newton</a> </li>
-              <li><a href="#">Spline</a> </li>
+              <li><a href="{% url 'vandermonde' %}">Vandermonde</a> </li>
+              <li><a href="#">Inter Newton</a> 
+                <ul class="menu-vertical">
+                  <li><a href="{% url 'newtonIn' %}">NewtonIn</a></li>
+                  <li><a href="{% url 'newtonOr' %}">NewtonOr</a></li>
+                </ul>
+              </li>
+
+              <li><a href="{% url 'spline' %}">Spline</a> </li>
 
             </ul>
           </li>
