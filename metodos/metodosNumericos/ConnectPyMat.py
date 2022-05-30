@@ -12,6 +12,7 @@ def busIncr(x0,delta,niter):#mas tarde defino los parametros
 
 #Empieza no lineales
 def bisecc(xi,xs,Tol,niter,fun,err):
+    #listo
     print("Respuesta: ")
     print(eng.biseccion(xi,xs,Tol,niter,fun,err))
     print("------------------------")

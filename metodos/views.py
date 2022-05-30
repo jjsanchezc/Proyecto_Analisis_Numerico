@@ -12,6 +12,13 @@ def metodosNoLineal(request):
 
 def sistemaDeEcua(request):
     return render(request,'sistemaDeEcua.html')
+def busIncr(request):
+
+    if request.method=="POST":
+        print("entraaaaaaa")
+        pm.busIncr(-2,0.5,4)
+    return render(request,'metodosNoLineal/busquedasIncr.html')
+
 
 def bisec(request):
     print(request.POST)
@@ -22,7 +29,7 @@ def bisec(request):
     nIter=request.POST.get('nIter')
     fun=request.POST.get('Fun')
     err=request.POST.get('err')
-    if Xi!=None or Xi!=None and Xs!=None and  Tol!=None and  nIter!=None and fun!=None and err!=None :
+    if Xi!=None and Xs!=None and  Tol!=None and  nIter!=None and fun!=None and err!=None :
         print("entra en biseccion")
         try:
             pm.bisecc(Xi,Xs,Tol,nIter,fun,err)
@@ -32,14 +39,18 @@ def bisec(request):
         msg="dejaste un espacio vacioooooo"
     return render(request,'metodosNoLineal/biseccion.html')
 
-def busIncr(request):
-
-    if request.method=="POST":
-        print("entraaaaaaa")
-        pm.busIncr(-2,0.5,4)
-    return render(request,'metodosNoLineal/busquedasIncr.html')
-
 def newton(request):
+    fun=request.POST.get('fun')
+    x=request.POST.get('x0')
+    tol=request.POST.get('tol')
+    niter=request.POST.get('niter')
+    err=request.POST.get('err')
+    
+    if x!=None and tol!=None and niter!=None and fun!=None and err!=None:
+        try:
+            pm.Newton(fun,x,tol,niter,err)
+        except:
+            print('error en Newton')
     return render(request, 'metodosNoLineal/newton.html')
 
 def puntoFijo(request):
