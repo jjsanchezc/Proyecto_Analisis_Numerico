@@ -1,6 +1,6 @@
 %Punto fijo: se ingresa el valor inicial (x0), la tolerancia del error (Tol) y el mÃ ximo nÃ¹mero de iteraciones (niter) 
 
-function [n,xn,fm,E] = PuntoFijo()
+function [n,xn,fm,E] = PuntoFijo(f,g)
     syms x
 f = input("Ingrese la funcion f:");
 g = input("Ingrese la funcion g:");

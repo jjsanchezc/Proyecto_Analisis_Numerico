@@ -1,3 +1,4 @@
+function [E,s] = jacobi(A,b,x,tole,itera)
 A = input('Ingrese la matriz A:  ');%ingrese la matriz de coeficientes
 b = input('Ingresar el Termino independiente b:  ');%Ingrese el termino independiente
 x = input('Aproximacion Inicial X0: ');%Ingrese una aproximación inicial para x0
