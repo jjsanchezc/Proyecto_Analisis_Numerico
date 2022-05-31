@@ -68,6 +68,7 @@ def puntoFijo(request):
     return render(request, 'metodosNoLineal/puntoFijo.html')
 
 def reglaFalsa(request):
+    #listo
     fun=request.POST.get('fun')
     xi=request.POST.get('xi')
     xf=request.POST.get('xf')

@@ -1,8 +1,9 @@
 function [E,s] = Seidel(A,b,x,itera,tole)
 
-	A=char(A);
-    b=char(b);
-    x=str2double(x);
+	A=str2num(A);
+
+    b=str2num(b);    
+	x=str2num(x);
     itera=str2double(itera);
     tole=str2double(tole);
 
@@ -26,7 +27,7 @@ if radioe > 1
 elseif det(A)==0
 	dis('el sistema no tiene solucion porque el determinante es 0')%Muestre que el sistema no tiene solución
 else
-	C = (d-l)^-1 * b
+	C = (d-l)^-1 .* b
 	i = 0;
 	error = tole + 1;
 	while error > tole && i < itera
