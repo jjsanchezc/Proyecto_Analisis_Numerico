@@ -77,6 +77,8 @@ x = linspace(xi,xs);
        fprintf('El intervalo es inadecuado\n')         
     end
     p = eval(subs(f,x));
+    
+    %Sanchez aca es donde actua la funcion grafica 
     plot(x,p,'r')
     grid on
     hold on

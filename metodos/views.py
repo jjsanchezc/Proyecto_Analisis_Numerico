@@ -52,6 +52,7 @@ def newton(request):
     return render(request, 'metodosNoLineal/newton.html')
 
 def puntoFijo(request):
+    #listo
     print(request.POST)
     funf=request.POST.get('funf')
     fung=request.POST.get('fung')

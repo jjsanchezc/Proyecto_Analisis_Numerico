@@ -49,6 +49,8 @@ x = linspace(-2,0);% Intervalo de Grafica
         y = eval(subs(f,x));
         z = eval(subs(g,x));
         r = x;
+
+        %sanxhez aca es donde se hace la gr
         plot (x,y,'r',x,z,'b',x,r,'g')
         hold on
         grid on
