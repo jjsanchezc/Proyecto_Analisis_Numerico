@@ -1,13 +1,13 @@
 %Punto fijo: se ingresa el valor inicial (x0), la tolerancia del error (Tol) y el mÃ ximo nÃ¹mero de iteraciones (niter) 
 
-function [n,xn,fm,E] = PuntoFijo(f,g)
+function [n,xn,fm,E] = PuntoFijo(f,g,x0,Tol,niter,Terr)
     syms x
-f = input("Ingrese la funcion f:");
-g = input("Ingrese la funcion g:");
-x0 = input("Ingrese x0:");
-Tol = input("Ingrese la toleracia:"); 
-niter = input ("Ingrese el numero maximo de iteraciones:");
-Terr = input("Ingrese el error que quiere hallar, siendo 0 el error absoluto y 1 el error relativo: ");
+        f=str2sym(f)
+        g=str2sym(g)
+        x0=str2double(x0);
+        Tol=str2double(Tol);
+        niter=str2double(niter);
+        Terr=str2double(Terr);
 x = linspace(-2,0);% Intervalo de Grafica
         c=0;
         fm(c+1) = eval(subs(f,x0));

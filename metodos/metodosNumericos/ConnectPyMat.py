@@ -33,9 +33,9 @@ def RegulaFalsi(f,xi,xs,tol,niter,terr):
     print(eng.RegulaFalsi(f,xi,xs,tol,niter,terr))
     print("------------------------")  
 
-def PuntoFijo(f,g,x0,Tol,niter,Terr,x):
+def PuntoFijo(f,g,x0,Tol,niter,Terr):
     print("Respuesta: ")
-    print(eng.PuntoFijo(f,g,x0,Tol,niter,Terr,x))
+    print(eng.PuntoFijo(f,g,x0,Tol,niter,Terr))
     print("------------------------")  
 
 #acaba no lineales

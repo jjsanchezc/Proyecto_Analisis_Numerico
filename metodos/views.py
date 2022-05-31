@@ -17,6 +17,7 @@ def busIncr(request):
 
 
 def bisec(request):
+    #listo
     print(request.POST)
     msg=None
     Xi=request.POST.get('Xi')
@@ -36,6 +37,7 @@ def bisec(request):
     return render(request,'metodosNoLineal/biseccion.html')
 
 def newton(request):
+    #listo
     fun=request.POST.get('fun')
     x=request.POST.get('x0')
     tol=request.POST.get('tol')
@@ -50,12 +52,25 @@ def newton(request):
     return render(request, 'metodosNoLineal/newton.html')
 
 def puntoFijo(request):
+    print(request.POST)
+    funf=request.POST.get('funf')
+    fung=request.POST.get('fung')
+    x0=request.POST.get('x0')
+    tol=request.POST.get('tol')
+    niter=request.POST.get('niter')
+    err=request.POST.get('err')
+    if x0!=None and tol!=None and niter!=None and funf!=None and fung!=None:
+        try:
+            pm.PuntoFijo(funf,fung,x0,tol,niter,err)
+        except:
+            print('error punto fijo')
     return render(request, 'metodosNoLineal/puntoFijo.html')
 
 def reglaFalsa(request):
     return render(request, 'metodosNoLineal/reglaFalsa.html')
 
 def secante(request):
+    #listo
     fun=request.POST.get('fun')
     x0=request.POST.get('x0')
     x1=request.POST.get('x1')
