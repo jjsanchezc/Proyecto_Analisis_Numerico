@@ -1,27 +1,15 @@
 %SOR: Calcula la solución del sistema
 %Ax=b con base en una condición inicial x0,mediante el método Gauss Seidel (relajado), depende del valor de w 
-%entre (0,2)
-clear
-clc
-format long
-
-/*A=input('ingrese la matriz A: ');
-b=input('ingrese el vector de terminos independientes (sin transponer): ');
-b=b';
-x0=input('ingrese un vector aproximado a la solucion (sin transponer): ');
-x0=x0';
-Tol=input('ingrese la tolerancia: ');
-niter=input('ingrese numero maximo de iteraciones: ');
-w=input('ingrese el valor de W, con la codicion 0<W<2: ');*/
 
 
-[E,s] = SOR(x0,A,b,Tol,niter,w);
+%[E,s] = SOR(x0,A,b,Tol,niter,w);
 function [E,s] = SOR(x0,A,b,Tol,niter,w)
 
-    A=str2double(A);
-    b=str2double(b);
-    tole=str2double(tole);
-    itera=str2double(itera);
+    x0=str2double(x0);
+    A=str2mat(A);
+    b=str2mat(b);
+    Tol=str2double(Tol);
+    niter=str2double(niter);
 	w=str2double(w);
 
     n(1)=0;

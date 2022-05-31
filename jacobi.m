@@ -17,9 +17,9 @@ T = d^-1*(l+u)
 val_propios=eig(T)
 radioe = max(abs(val_propios))%Calcule el radio espectral
 
-  	A=str2double(A);
-    b=str2double(b);
-    x=str2double(x);
+ 	A=str2mat(A);
+    b=str2mat(b);    
+	x=str2double(x);
 	tole=str2double(tole);
     itera=str2double(itera);
 	

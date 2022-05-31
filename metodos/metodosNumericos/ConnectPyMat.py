@@ -56,9 +56,9 @@ def Seidel(A,b,x,itera,tole):
     print(eng.Seidel(A,b,x,itera,tole))
     print("------------------------")  
 
-def SOR(x0,A,b,Tol,niter,w):
+def SOR(x0,A,b,tole,itera,w):
     print("Respuesta: ")
-    print(eng.SOR(x0,A,b,Tol,niter,w))
+    print(eng.SOR(x0,A,b,tole,itera,w))
     print("------------------------")  
 
 def pivpar(Ab,n,k):

@@ -7,14 +7,15 @@
 %
 
 function [x, mark] = GaussPiv(A,b,n,Piv,z)
+
+A=char(A);
+b=char(b);  
+n=char(n);
+Piv=str2double(Piv);
+z=str2double(z);
+
 Ab=[A b];
 mark=1:1:n;
-
-    A=str2double(A);
-    b=str2double(b);
-    n=str2double(n);
-    Piv=str2double(Piv);
-    z=str2double(z);
 
 for k=1:n-1
     if Piv==1
