@@ -1,11 +1,11 @@
-function [s,E,fm,fe]= RegulaFalsi()
+function [s,E,fm,fe]= RegulaFalsi(f,xi,xs,tol,niter,terr)
 syms x
-f = input("Escriba la funcion f(x): ");
-xi = input("Escriba el valor de xi: ");
-xs = input("Escriba el valor de xf: ");
-tol = input("Escriba el valor de la tolerancia: ");
-niter = input("Escriba el numero de iteraciones maximas: ");
-terr = input("Ingrese el error que quiere hallar, siendo 0 el error absoluto y 1 el error relativo: ");
+    f=str2sym(f)
+    xi=str2double(xi);
+    xs=str2double(xs);
+    tol=str2double(tol);
+    niter=str2double(niter);
+    terr=str2double(terr);
 a = xi - 0.5;
 b = xs + 0.5; 
 x = linspace(a,b);
