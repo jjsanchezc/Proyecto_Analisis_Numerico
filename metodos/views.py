@@ -48,11 +48,15 @@ def newton(request):
     err=request.POST.get('err')
     
     if x!=None and tol!=None and niter!=None and fun!=None and err!=None:
-        try:
-            pm.Newton(fun,x,tol,niter,err)
-        except:
-            print('error en Newton')
-    return render(request, 'metodosNoLineal/newton.html')
+        if x!="" and tol!="" and niter!="" and fun!="" and err!="":
+            try:
+                pm.Newton(fun,x,tol,niter,err)
+            except:
+                print('error en Newton')
+        else:
+            print('dejaste un espacio vacio')
+            msg="dejaste un espacio vacioooooo"
+    return render(request, 'metodosNoLineal/newton.html',{'msg':msg})
 
 def puntoFijo(request):
     #listo
