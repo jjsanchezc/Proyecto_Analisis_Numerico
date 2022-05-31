@@ -41,6 +41,7 @@ def bisec(request):
 
 def newton(request):
     #listo
+    msg=None
     fun=request.POST.get('fun')
     x=request.POST.get('x0')
     tol=request.POST.get('tol')
@@ -50,9 +51,10 @@ def newton(request):
     if x!=None and tol!=None and niter!=None and fun!=None and err!=None:
         if x!="" and tol!="" and niter!="" and fun!="" and err!="":
             try:
-                pm.Newton(fun,x,tol,niter,err)
+                msg=pm.Newton(fun,x,tol,niter,err)
             except:
-                print('error en Newton')
+                msg='ingresaste mal un dato'
+                #print('error en Newton')
         else:
             print('dejaste un espacio vacio')
             msg="dejaste un espacio vacioooooo"
@@ -61,6 +63,7 @@ def newton(request):
 def puntoFijo(request):
     #listo
     print(request.POST)
+    msg=None
     funf=request.POST.get('funf')
     fung=request.POST.get('fung')
     x0=request.POST.get('x0')
@@ -68,14 +71,20 @@ def puntoFijo(request):
     niter=request.POST.get('niter')
     err=request.POST.get('err')
     if x0!=None and tol!=None and niter!=None and funf!=None and fung!=None:
-        try:
-            pm.PuntoFijo(funf,fung,x0,tol,niter,err)
-        except:
-            print('error punto fijo')
-    return render(request, 'metodosNoLineal/puntoFijo.html')
+        if x0!="" and tol!="" and niter!="" and funf!="" and fung!="":
+            try:
+                msg= pm.PuntoFijo(funf,fung,x0,tol,niter,err)
+            except:
+                msg='ingresaste mal un dato'
+                #print('error punto fijo')
+        else:
+            print('dejaste un espacio vacio')
+            msg="dejaste un espacio vacioooooo"
+    return render(request, 'metodosNoLineal/puntoFijo.html',{'msg':msg})
 
 def reglaFalsa(request):
     #listo
+    msg=None
     fun=request.POST.get('fun')
     xi=request.POST.get('xi')
     xf=request.POST.get('xf')
@@ -83,25 +92,36 @@ def reglaFalsa(request):
     niter=request.POST.get('niter')
     err=request.POST.get('err')
     if xi!=None and xf!=None and tol!=None and niter!=None and fun!=None:
-        try:
-            pm.RegulaFalsi(fun,xi,xf,tol,niter,err)
-        except:
-            print('error en regla falsa')
-    return render(request, 'metodosNoLineal/reglaFalsa.html')
+        if xi!="" and xf!="" and tol!="" and niter!="" and fun!="":
+            try:
+                msg=pm.RegulaFalsi(fun,xi,xf,tol,niter,err)
+            except:
+                #print('error en regla falsa')
+                msg='ingresaste mal un dato'
+        else:
+            print('dejaste un espacio vacio')
+            msg="dejaste un espacio vacioooooo"
+    return render(request, 'metodosNoLineal/reglaFalsa.html',{'msg':msg})
 
 def secante(request):
     #listo
+    msg=None
     fun=request.POST.get('fun')
     x0=request.POST.get('x0')
     x1=request.POST.get('x1')
     tol=request.POST.get('tol')
     niter=request.POST.get('niter')
     if x0!=None and x1!=None and  tol!=None and  niter!=None and fun!=None:
-        try:
-            pm.Secante(x0,x1,tol,niter,fun)
-        except:
-            print('error en secante')
-    return render(request, 'metodosNoLineal/secante.html')
+        if x0!="" and x1!="" and  tol!="" and  niter!="" and fun!="":
+            try:
+                pm.Secante(x0,x1,tol,niter,fun)
+            except:
+                print('error en secante')
+                msg='ingresaste mal un dato'
+        else:
+            print('dejaste un espacio vacio')
+            msg="dejaste un espacio vacioooooo"
+    return render(request, 'metodosNoLineal/secante.html',{'msg':msg})
 
 def raicesMult(request):
     return render(request, 'metodosNoLineal/raicesMult.html')
