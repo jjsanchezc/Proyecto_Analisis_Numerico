@@ -1,10 +1,11 @@
-function [s,xn,n,fn,E] = Secante(f,xo)
+function [s,xn,n,fn,E] = Secante(x0,x1,tol,niter,f)
 syms x
-f = input("Ingrese la funcion f: ");
-x0 = input("Ingrese el valor de x0: ");
-x1 = input("Ingrese el valor de x1: ");
-niter = input("Ingrese el numero maximo de iteraciones: ");
-Tol = input("Ingrese el valor de la tolerancia: ");
+    f=str2sym(f)
+    x0=str2double(x0);
+    x1=str2double(x1);
+    Tol=str2double(tol);
+    niter=str2double(niter);
+
 c=0;
 xn1(c+1)=x1;
 xn0(c+1)=x0;

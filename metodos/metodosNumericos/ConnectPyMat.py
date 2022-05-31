@@ -18,13 +18,14 @@ def bisecc(xi,xs,Tol,niter,fun,err):
     print("------------------------")
     
 def Newton(f,x0,Tol,niter,Terr):
+    #listo
     print("Respuesta: ")
     print(eng.Newton(f,x0,Tol,niter,Terr))
     print("------------------------")  
    
-def Secante(f,xo,x1,niter,Tol):
+def Secante(x0,x1,tol,niter,f):
     print("Respuesta: ")
-    print(eng.Secante(f,xo,x1,niter,Tol))
+    print(eng.Secante(x0,x1,tol,niter,f))
     print("------------------------")  
 
 def RegulaFalsi(f,xi,xs,tol,niter,terr):

@@ -1,4 +1,5 @@
 import http
+from os import execv
 import matlab
 from django.shortcuts import render
 from metodos.metodosNumericos import ConnectPyMat as pm
@@ -60,6 +61,16 @@ def reglaFalsa(request):
     return render(request, 'metodosNoLineal/reglaFalsa.html')
 
 def secante(request):
+    fun=request.POST.get('fun')
+    x0=request.POST.get('x0')
+    x1=request.POST.get('x1')
+    tol=request.POST.get('tol')
+    niter=request.POST.get('niter')
+    if x0!=None and x1!=None and  tol!=None and  niter!=None and fun!=None:
+        try:
+            pm.Secante(x0,x1,tol,niter,fun)
+        except:
+            print('error en secante')
     return render(request, 'metodosNoLineal/secante.html')
 
 def raicesMult(request):
