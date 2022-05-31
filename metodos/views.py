@@ -68,7 +68,17 @@ def puntoFijo(request):
     return render(request, 'metodosNoLineal/puntoFijo.html')
 
 def reglaFalsa(request):
-    
+    fun=request.POST.get('fun')
+    xi=request.POST.get('xi')
+    xf=request.POST.get('xf')
+    tol=request.POST.get('tol')
+    niter=request.POST.get('niter')
+    err=request.POST.get('err')
+    if xi!=None and xf!=None and tol!=None and niter!=None and fun!=None:
+        try:
+            pm.RegulaFalsi(fun,xi,xf,tol,niter,err)
+        except:
+            print('error en regla falsa')
     return render(request, 'metodosNoLineal/reglaFalsa.html')
 
 def secante(request):
