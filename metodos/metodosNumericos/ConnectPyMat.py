@@ -24,16 +24,19 @@ def Newton(f,x0,Tol,niter,Terr):
     print("------------------------")  
    
 def Secante(x0,x1,tol,niter,f):
+    #listo
     print("Respuesta: ")
     print(eng.Secante(x0,x1,tol,niter,f))
     print("------------------------")  
 
 def RegulaFalsi(f,xi,xs,tol,niter,terr):
+    #listo
     print("Respuesta: ")
     print(eng.RegulaFalsi(f,xi,xs,tol,niter,terr))
     print("------------------------")  
 
 def PuntoFijo(f,g,x0,Tol,niter,Terr):
+    #listo
     print("Respuesta: ")
     print(eng.PuntoFijo(f,g,x0,Tol,niter,Terr))
     print("------------------------")  
