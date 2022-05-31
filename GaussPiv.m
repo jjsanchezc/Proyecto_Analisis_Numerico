@@ -1,3 +1,4 @@
+
 %GaussPiv: Calcula la solución de un sistema de ecuaciones Ax=b, ya sea
 % sin pivoteo piv=0, usando pivoteo parcial piv=1 o pivoteo totalpiv=2.
 % Donde A es de tamaño nxn y b de tamaño nx1
@@ -8,6 +9,12 @@
 function [x, mark] = GaussPiv(A,b,n,Piv,z)
 Ab=[A b];
 mark=1:1:n;
+
+    A=str2double(A);
+    b=str2double(b);
+    n=str2double(n);
+    Piv=str2double(Piv);
+    z=str2double(z);
 
 for k=1:n-1
     if Piv==1

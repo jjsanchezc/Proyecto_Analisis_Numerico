@@ -1,9 +1,9 @@
 function [E,s] = Seidel(A,b,x,itera,tole)
-A = input('Ingresar la matriz A: ');%ingrese la matriz de coeficientes
+/*A = input('Ingresar la matriz A: ');%ingrese la matriz de coeficientes
 b = input('Ingresar el Termino independiente b: ');%Ingrese el termino independiente
 x = input('Ingresar el valor inicial para x0: ');%Ingrese un valor inicial para x0
 itera = input('Numero maximo de iteraciones: ');%ingrese el número máximo de iteraciones
-tole = input('Tolerancia: ');%Ingrese la tolerancia
+tole = input('Tolerancia: ');%Ingrese la tolerancia*/
 condicion = norm(A) * norm(A^-1);%Calcule el condicional
 disp('El Condicional es:')%Muestre el condicional
 disp(condicion)
@@ -12,6 +12,13 @@ n = length(b);
 d = diag(diag(A));
 l = d - tril(A);
 u = d - triu(A);
+
+    A=str2double(A);
+    b=str2double(b);
+    x=str2double(x);
+    itera=str2double(itera);
+    tole=str2double(tole);
+
 
 T = (d-l)^-1 * u
 val_propios = eig(T)

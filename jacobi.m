@@ -1,9 +1,10 @@
+
 function [E,s] = jacobi(A,b,x,tole,itera)
-A = input('Ingrese la matriz A:  ');%ingrese la matriz de coeficientes
+/*A = input('Ingrese la matriz A:  ');%ingrese la matriz de coeficientes
 b = input('Ingresar el Termino independiente b:  ');%Ingrese el termino independiente
 x = input('Aproximacion Inicial X0: ');%Ingrese una aproximación inicial para x0
 itera = input('Numero maximo de iteraciones: ');%ingrese el número máximo de iteraciones
-tole = input('Tolerancia: ');%Ingrese la tolerancia
+tole = input('Tolerancia: ');%Ingrese la tolerancia*/
 condicional = norm(A) * norm (A^-1);%Calcule el condicional
 disp('El Condicional es:')%Muestre el condicional
 disp(condicional)
@@ -16,6 +17,12 @@ T = d^-1*(l+u)
 val_propios=eig(T)
 radioe = max(abs(val_propios))%Calcule el radio espectral
 
+  	A=str2double(A);
+    b=str2double(b);
+    x=str2double(x);
+	tole=str2double(tole);
+    itera=str2double(itera);
+	
 if radioe > 1
     disp('El Radio Espectral es mayor que 1, por lo tanto el metodo diverge')%Muestre que el método diverge
     disp(radioe)

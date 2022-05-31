@@ -87,15 +87,60 @@ def raicesMult(request):
     return render(request, 'metodosNoLineal/raicesMult.html')
 
 def gauss(request):
+    matA=request.POST.get('matA')
+    vectorB=request.POST.get('vecb')
+    normaV=request.POST.get('normaV')
+    piv=request.POST.get('piv')
+    normaE=request.POST.get('normae')
+    
+    if vectorB!=None and normaV!=None and piv!=None and matA!=None and normaE!=None:
+        try:
+            pm.GaussPiv(matA,vectorB,normaV,piv,normaE)
+        except:
+            print('error en Gauss')
     return render(request, 'sistemaDeEcua/gauss.html')
 
 def jacobi(request):
+    mata=request.POST.get('mata')
+    termb=request.POST.get('termb')
+    x0=request.POST.get('x0')
+    tol=request.POST.get('tol')
+    niter=request.POST.get('niter')
+    
+    if termb!=None and x0!=None and tol!=None and mata!=None and niter!=None:
+        try:
+            pm.jacobi(mata,termb,x0,tol,niter)
+        except:
+            print('error en Jacobi')
     return render(request, 'sistemaDeEcua/jacobi.html')
 
 def gaussSeidel(request):
+    mata=request.POST.get('mata')
+    termb=request.POST.get('termb')
+    x0=request.POST.get('x0')
+    tol=request.POST.get('tol')
+    niter=request.POST.get('niter')
+    
+    if termb!=None and x0!=None and tol!=None and mata!=None and niter!=None:
+        try:
+            pm.Seidel(mata,termb,x0,tol,niter)
+        except:
+            print('error en Gauss Seidel')
     return render(request, 'sistemaDeEcua/gaussSeidel.html')
 
 def SOR(request):
+    mata=request.POST.get('mata')
+    termb=request.POST.get('termb')
+    x0=request.POSsT.get('x0')
+    tol=request.POST.get('tol')
+    niter=request.POST.get('niter')
+    w=request.POST.get('w')
+    
+    if termb!=None and x0!=None and tol!=None and mata!=None and niter!=None and w!=None:
+        try:
+            pm.SOR(mata,termb,x0,tol,niter,w)
+        except:
+            print('error en SOR')
     return render(request, 'sistemaDeEcua/SOR.html')
 
 def vandermonde(request):

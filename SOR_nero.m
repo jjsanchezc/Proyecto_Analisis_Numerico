@@ -5,16 +5,25 @@ clear
 clc
 format long
 
-A=input('ingrese la matriz A: ');
+/*A=input('ingrese la matriz A: ');
 b=input('ingrese el vector de terminos independientes (sin transponer): ');
 b=b';
 x0=input('ingrese un vector aproximado a la solucion (sin transponer): ');
 x0=x0';
 Tol=input('ingrese la tolerancia: ');
 niter=input('ingrese numero maximo de iteraciones: ');
-w=input('ingrese el valor de W, con la codicion 0<W<2: ');
+w=input('ingrese el valor de W, con la codicion 0<W<2: ');*/
+
+
 [E,s] = SOR(x0,A,b,Tol,niter,w);
 function [E,s] = SOR(x0,A,b,Tol,niter,w)
+
+    A=str2double(A);
+    b=str2double(b);
+    tole=str2double(tole);
+    itera=str2double(itera);
+	w=str2double(w);
+
     n(1)=0;
     c=n(1);
     mx=x0';
