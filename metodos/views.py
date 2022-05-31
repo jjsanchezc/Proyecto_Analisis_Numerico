@@ -8,11 +8,6 @@ from metodos.metodosNumericos import ConnectPyMat as pm
 def home(request):
     return render(request,'home.html')
 
-def metodosNoLineal(request):
-    return render(request,'metodosNoLineal.html')
-
-def sistemaDeEcua(request):
-    return render(request,'sistemaDeEcua.html')
 def busIncr(request):
 
     if request.method=="POST":

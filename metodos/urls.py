@@ -5,8 +5,6 @@ from metodos import views
 
 urlpatterns = [
 path('', views.home, name="home"),
-path('metodosNoLineal', views.metodosNoLineal, name="metodosNoLineal"),
-path('sistemaDeEcua', views.sistemaDeEcua, name="sistemaDeEcua"),
 path('biseccion/',views.bisec, name="biseccion"),
 path('busquedas-incrementales/',views.busIncr, name="busquedas-incrementales"),
 path('newton/', views.newton, name="newton"),
