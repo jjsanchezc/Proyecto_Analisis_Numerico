@@ -65,7 +65,7 @@ function [n,xn,fm,dfm,E] = Newton(f,x0,Tol,niter,Terr)
            disp('          N          Xn          Fx          Error')
            D = [N' xn' fm' E'];
            disp(D)
-            
+    
         end
-        
+    plot(x,n)
 end

@@ -65,6 +65,8 @@ x = linspace(xi,xs);
            disp(['     n        Xa         F         E'])
              D=[N' xa' fm' E'];
              disp(D)
+             xm=5
+            fprintf('%f esta es la RESPUESTAAAAAA\n',xm)
            
         else 
            s=xm;
@@ -85,4 +87,5 @@ x = linspace(xi,xs);
     %line([0,0], ylim;, 'Color', 'k', 'LineWidth', 2); % Draw line for Y axis.
     line(xlim, [0,0], 'Color', 'k', 'LineWidth', 0.5); % Draw line for X axis.
     scatter(s,eval(subs(f,s)),'.')   
+    
 end

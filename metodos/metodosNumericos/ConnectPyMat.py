@@ -14,8 +14,10 @@ def busIncr(x0,delta,niter):#mas tarde defino los parametros
 def bisecc(xi,xs,Tol,niter,fun,err):
     #listo
     print("Respuesta: ")
-    print(eng.biseccion(xi,xs,Tol,niter,fun,err))
+    ans=eng.biseccion(xi,xs,Tol,niter,fun,err)
+    print(ans)
     print("------------------------")
+    return ans 
     
 def Newton(f,x0,Tol,niter,Terr):
     #listo

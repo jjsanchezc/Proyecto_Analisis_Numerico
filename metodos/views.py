@@ -27,14 +27,17 @@ def bisec(request):
     fun=request.POST.get('Fun')
     err=request.POST.get('err')
     if Xi!=None and Xs!=None and  Tol!=None and  nIter!=None and fun!=None and err!=None :
-        print("entra en biseccion")
-        try:
-            pm.bisecc(Xi,Xs,Tol,nIter,fun,err)
-        except:
-            print("error f")
-    else:
-        msg="dejaste un espacio vacioooooo"
-    return render(request,'metodosNoLineal/biseccion.html')
+        if Xi!="" and Xs!="" and  Tol!="" and  nIter!="" and fun!="" and err!="" :
+            print("entra en biseccion")
+            try:
+                
+                msg=pm.bisecc(Xi,Xs,Tol,nIter,fun,err)
+            except:
+                msg='ingresaste mal un dato'
+        else:
+            print('dejaste un espacio vacio')
+            msg="dejaste un espacio vacioooooo"
+    return render(request,'metodosNoLineal/biseccion.html',{'msg':msg})
 
 def newton(request):
     #listo
