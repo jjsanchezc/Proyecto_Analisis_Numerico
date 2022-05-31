@@ -68,6 +68,7 @@ def puntoFijo(request):
     return render(request, 'metodosNoLineal/puntoFijo.html')
 
 def reglaFalsa(request):
+    
     return render(request, 'metodosNoLineal/reglaFalsa.html')
 
 def secante(request):
@@ -153,20 +154,6 @@ def spline(request):
 def newtonIn(request):
     return render(request, 'interpolacion/newtonIn.html')
 
-
-def calcular(request):
-    if request.method=="POST":
-        x0=0
-        x0=request.POST.get('x0')
-        delta=request.POST.get('delta')
-        niter=request.POST.get('niter')
-        print(type(niter),"este es el tipo de dato de")
-      #  try:
-        pm.busIncr(x0,delta,niter)
-    #except ValueError:
-        print("hubo un error de value")
-        print(f"x0: {x0} \ndelta: {delta}\niter:{niter}")
-    return render(request, 'metodosNoLineal/busquedasIncr.html')
 
 
 
