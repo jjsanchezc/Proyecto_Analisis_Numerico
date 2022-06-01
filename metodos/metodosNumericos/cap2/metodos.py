@@ -138,8 +138,46 @@ def seidel(mata,termb,x0,tol,niter):
         tempMapIterData.clear()
     return msg
 
-def SOR():
-    pass
+def SOR(mata,termb,x0,tol,w):
+    print('entro melo')
+    tableListData = []
+    tempMapIterData = {}
+
+    a = json.loads(mata)
+    a = np.array(a)
+    
+    x0 = json.loads(x0)
+    
+    b = json.loads(termb)
+    b = np.array(b)
+    w = float(w)
+    tol = float(tol)
+
+
+    step = 0
+    phi = x0[:]
+    residual = np.linalg.norm(np.matmul(a, phi) - b)  # Initial residual
+    msg=None
+    print('todo bien hasta aca')
+    while residual > tol:
+        for i in range(a.shape[0]):
+            sigma = 0
+            for j in range(a.shape[1]):
+                if j != i:
+                    sigma += a[i, j] * phi[j]
+            phi[i] = (1 - w) * phi[i] + (w / a[i, i]) * (b[i] - sigma)
+        residual = np.linalg.norm(np.matmul(a, phi) - b)
+        step += 1
+        print("Step {} Residual: {:10.6g}".format(step, residual))
+        tempMapIterData['Iteracion'] = str(step)
+        tempMapIterData['Resultado'] = str(residual)
+
+        tableListData.append(tempMapIterData.copy())
+        for i in tableListData:
+            print(i)
+            msg=i
+        tempMapIterData.clear()
+    return msg        
 
 def pivoteos():
     #aca llama a ambos

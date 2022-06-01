@@ -11,6 +11,7 @@ from metodos.metodosNumericos.cap1.metodos import raicesmultiples as rm
 from metodos.metodosNumericos.cap2.metodos import eliminaiconGauss as eg
 from metodos.metodosNumericos.cap2.metodos import jacobi as jb
 from metodos.metodosNumericos.cap2.metodos import seidel as se
+from metodos.metodosNumericos.cap2.metodos import SOR as sor
 
 
 # Create your views here.
@@ -214,14 +215,12 @@ def SOR(request):
     mata=request.POST.get('mata')
     termb=request.POST.get('termb')
     x0=request.POST.get('x0')
-    tole=request.POST.get('tol')
-    itera=request.POST.get('niter')
     w=request.POST.get('w')
-    
-    if termb!=None and x0!=None and tole!=None and mata!=None and itera!=None and w!=None:
-        if termb!="" and x0!="" and tole!="" and mata!="" and itera!="" and w!="":
+    tol=request.POST.get('tol')
+    if termb!=None and x0!=None and mata!=None and tol!=None  and w!=None:
+        if termb!="" and x0!="" and mata!="" and tol!='' and w!="":
             try:
-                msg=pm.SOR(mata,termb,x0,tole,itera,w)
+                msg=sor(mata,termb,x0,tol,w)
             except:
                 #print('error en SOR')
                 msg='ingresaste mal un dato'
