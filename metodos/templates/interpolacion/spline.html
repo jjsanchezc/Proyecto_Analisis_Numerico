@@ -1,6 +1,14 @@
 <h1>Solución por el método Spline</h1>
 
 <body>
+
+    {% if msg %}
+      <p>{{ msg }}</p>
+
+      <form method ="GET" >
+        <button href="interpolacion/spline.html">Volver</button>
+    </form> 
+    {% else %}
     <form enctype="multipart/form-data" method="post"> 
         {% csrf_token %}
      
@@ -20,7 +28,7 @@
         </div>
 
         <div class="form-group row">
-            <p > Ingrese que tipo de trazador quiere: lineal=1, cuadratico=2 o cúbico=3</p>
+            <p > Ingrese que tipo de trazador quiere: lineal=1 o cúbico=2</p>
             <label for="" class="col-sm-2 col-form-label">Trazador:</label>
             <div class="col-sm-10">
               <input type="text" name='tra' class="form-control" id="" placeholder="Trazador">
@@ -33,7 +41,7 @@
             </div>
         </div>
     </form>
-
+    {% endif %}
 
     <form method ="GET" action="/">
         <button href="home.html">Menú Principal</button>

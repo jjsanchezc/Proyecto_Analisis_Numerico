@@ -13,6 +13,9 @@ from metodos.metodosNumericos.cap2.metodos import jacobi as jb
 from metodos.metodosNumericos.cap2.metodos import seidel as se
 from metodos.metodosNumericos.cap2.metodos import SOR as sor
 from metodos.metodosNumericos.cap2.metodos import pivoteos as piv
+from metodos.metodosNumericos.cap3.metodos import vandermonde as van
+from metodos.metodosNumericos.cap3.metodos import spline as sp
+from metodos.metodosNumericos.cap3.metodos import newtonInter as ni
 
 
 # Create your views here.
@@ -248,15 +251,40 @@ def pivoteos(request):
 
 def vandermonde(request):
     msg=None
+    mata=request.POST.get('mata')
+    matb=request.POST.get('matb')
+    if mata!=None and matb!=None :
+        if mata!="" and matb!="":
+            try:
+                msg=van(mata,matb)
+            except:
+                msg='ingresaste mal un dato'
+        else:
+            print('dejaste un espacio vacio')
+            msg="dejaste un espacio vacio" 
     return render(request, 'interpolacion/vandermonde.html',{'msg':msg})
-
-def spline(request):
-    msg=None
-    return render(request, 'interpolacion/spline.html',{'msg':msg})
 
 def newtonIn(request):
     msg=None
     return render(request, 'interpolacion/newtonIn.html',{'msg':msg})
+
+def spline(request):
+    msg=None
+    mata=request.POST.get('mata')
+    resul=request.POST.get('resul')
+    tra=request.POST.get('tra')
+    print(request.POST)
+    if mata!=None and resul!=None and tra!=None:
+        if mata!="" and resul!="" and tra!="":
+            try:
+                msg=sp(mata,resul,tra)
+            except:
+                msg='ingresaste mal un dato'
+        else:
+            msg='dejaste un espacio vacio'
+    return render(request, 'interpolacion/spline.html',{'msg':msg})
+
+
 
 
 
