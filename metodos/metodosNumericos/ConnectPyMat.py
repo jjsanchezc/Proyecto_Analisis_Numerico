@@ -16,8 +16,6 @@ def busIncr(x0,delta,niter):#mas tarde defino los parametros
 def bisecc(xi,xs,Tol,niter,fun,err):
     #listo
     print("Respuesta: ")
-    eerr = io.StringIO()
-    out = io.StringIO()
     ans=eng.biseccion(xi,xs,Tol,niter,fun,err)
     print("------------------------")
     return ans
@@ -25,27 +23,31 @@ def bisecc(xi,xs,Tol,niter,fun,err):
 def Newton(f,x0,Tol,niter,Terr):
     #listo
     print("Respuesta: ")
-    print(eng.Newton(f,x0,Tol,niter,Terr))
-    
+    ans=eng.Newton(f,x0,Tol,niter,Terr)
+    print(ans)
     print("------------------------")  
-   
+    return ans
 def Secante(x0,x1,tol,niter,f):
     #listo
     print("Respuesta: ")
-    print(eng.Secante(x0,x1,tol,niter,f))
+    ans=eng.Secante(x0,x1,tol,niter,f)
+    print(ans)
     print("------------------------")  
-
+    return ans
 def RegulaFalsi(f,xi,xs,tol,niter,terr):
     #listo
     print("Respuesta: ")
-    print(eng.RegulaFalsi(f,xi,xs,tol,niter,terr))
+    ans=eng.RegulaFalsi(f,xi,xs,tol,niter,terr)
+    print(ans)
     print("------------------------")  
-
+    return ans
 def PuntoFijo(f,g,x0,Tol,niter,Terr):
     #listo
     print("Respuesta: ")
-    print(eng.PuntoFijo(f,g,x0,Tol,niter,Terr))
-    print("------------------------")  
+    ans=eng.PuntoFijo(f,g,x0,Tol,niter,Terr)
+    print(ans)
+    print("------------------------") 
+    return ans 
 
 #acaba no lineales
 

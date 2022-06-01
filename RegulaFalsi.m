@@ -1,4 +1,4 @@
-function [s,E,fm,fe]= RegulaFalsi(f,xi,xs,tol,niter,terr)
+function [msj,s,E,fm,fe]= RegulaFalsi(f,xi,xs,tol,niter,terr)
 syms x
     f=str2sym(f)
     xi=str2double(xi);
@@ -15,11 +15,11 @@ fs= eval(subs(f,xs));
 if fi==0
     s=xi;
     E=0;
-    fprintf('%f f(x) tiene raiz en \n',xi)
+    msj=sprintf('%f f(x) tiene raiz en \n',xi)
 elseif fs==0
     s=xs;
     E=0;
-    fprintf('%f f(x) tiene raiz en \n ',xs)
+    msj=sprintf('%f f(x) tiene raiz en \n ',xs)
 elseif fi*fs<0
     c=0;
     xm = xi-(((fi)*(xi-xs))/(fi-fs));
@@ -51,26 +51,26 @@ elseif fi*fs<0
     end
     if fe==0
            s=xm;
-           fprintf('%f es raiz de f(x)\n',xm)
+           msj=sprintf('%f es raiz de f(x)\n',xm)
            disp('   n       Xa        F         E')
             D= [N' xa' fm' E'];
             disp(D)
         elseif error<tol
            s=xm;
-           fprintf('%f es una aproximación de una raiz de f(x) con una tolerancia= %f\n',xm,tol)
+           msj=sprintf('%f es una aproximación de una raiz de f(x) con una tolerancia= %f\n',xm,tol)
            disp('     n        Xa         F         E')
              D=[N' xa' fm' E'];
              disp(D)
            
         else 
            s=xm;
-           fprintf('Fracasó en %f iteraciones \n',niter)
+           msj=sprintf('Fracasó en %f iteraciones \n',niter)
            disp('      n        Xa          F          E')
             D= [N' xa' fm' E'];
             disp(D)
     end
     else
-       fprintf('El intervalo es inadecuado\n')         
+       msj=sprintf('El intervalo es inadecuado\n')         
  end
     p = eval(subs(f,x));
     plot(x,p,'r')

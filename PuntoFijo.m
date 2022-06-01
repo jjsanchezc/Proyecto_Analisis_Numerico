@@ -1,6 +1,6 @@
 %Punto fijo: se ingresa el valor inicial (x0), la tolerancia del error (Tol) y el mÃ ximo nÃ¹mero de iteraciones (niter) 
 
-function [n,xn,fm,E] = PuntoFijo(f,g,x0,Tol,niter,Terr)
+function [msj,n,xn,fm,E] = PuntoFijo(f,g,x0,Tol,niter,Terr)
     syms x
         f=str2sym(f)
         g=str2sym(g)
@@ -32,19 +32,19 @@ x = linspace(-2,0);% Intervalo de Grafica
         end
         if fe==0
            n=x0;
-           fprintf('%f es raiz de f(x)',x0)
+           msj=sprintf('%f es raiz de f(x)',x0)
            disp('  N           Xn         F         E')
             D= [N' xn' fm' E'];
             disp(D)
         elseif error<Tol
            n=x0;
-           fprintf('%f es una aproximaciÃ³n de una raiz de f(x) con una tolerancia= %f',x0,Tol)
+           msj=sprintf('%f es una aproximación de una raiz de f(x) con una tolerancia= %f',x0,Tol)
            disp('  N           Xn         F         E')
            D= [N' xn' fm' E'];
            disp(D)
         else 
            n=x0;
-           fprintf('FracasÃ³ en %f iteraciones',niter) 
+           msj=sprintf('Fracasa en %f iteraciones',niter) 
         end
         y = eval(subs(f,x));
         z = eval(subs(g,x));

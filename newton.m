@@ -1,7 +1,7 @@
  %Newton: se ingresa el valor inicial (x0), la tolerancia del error (Tol) y el màximo nùmero de iteraciones (niter) 
 % Elegir entre 0 y 1 para el tipo de error, siendo 0 el error absoluto y 1
 % el error relativo
-function [n,xn,fm,dfm,E] = Newton(f,x0,Tol,niter,Terr)
+function [msj,n,xn,fm,dfm,E] = Newton(f,x0,Tol,niter,Terr)
     syms x
         f=str2sym(f)
         x0=str2double(x0);
@@ -39,7 +39,7 @@ function [n,xn,fm,dfm,E] = Newton(f,x0,Tol,niter,Terr)
         end
         if fe==0
            n=x0;
-           fprintf('%f es raiz de f(x) \n',x0)
+           msj=sprintf('%f es raiz de f(x) \n',x0)
            disp('          N          Xn          Fx          Error')
            D = [N' xn' fm' E'];
            disp(D)
@@ -47,25 +47,24 @@ function [n,xn,fm,dfm,E] = Newton(f,x0,Tol,niter,Terr)
 
         elseif error<Tol
            n=x0;
-           fprintf('%f es una aproximación de una raiz de f(x) con una tolerancia= %f \n',x0,Tol)
+           msj=sprintf('%f es una aproximación de una raiz de f(x) con una tolerancia= %f \n',x0,Tol)
            disp('          N          Xn          Fx          Error')
            D = [N' xn' fm' E'];
            disp(D)
 
         elseif dfe==0
            n=x0;
-           fprintf('%f es una posible raiz múltiple de f(x) \n',x0)
+           msj=sprintf('%f es una posible raiz múltiple de f(x) \n',x0)
            disp('          N          Xn          Fx          Error')
            D = [N' xn' fm' E'];
            disp(D)
           
         else 
            n=x0;
-           fprintf('Fracasó en %f iteraciones \n',niter)
+           msj=sprintf('Fracasó en %f iteraciones \n',niter)
            disp('          N          Xn          Fx          Error')
            D = [N' xn' fm' E'];
            disp(D)
     
         end
-    plot(x,n)
 end
