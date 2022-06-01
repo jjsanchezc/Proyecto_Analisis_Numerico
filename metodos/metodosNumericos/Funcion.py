@@ -1,5 +1,4 @@
 import base64
-from configparser import Interpolation
 from symtable import Symbol
 from metodos.utils import get_graph
 from sympy import *
@@ -10,9 +9,8 @@ import matplotlib.pyplot as mpl
 import numpy as numpy
 import sympy as sym
 from io import BytesIO
-#x = Symbol('x')
-#from scipy import interpolate
-
+x = Symbol('x')
+from scipy import interpolate
 
 
 class Funcion:

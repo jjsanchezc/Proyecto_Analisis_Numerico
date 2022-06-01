@@ -2,7 +2,7 @@ import base64
 import numpy as np
 import json
 import sympy as sym
-#from scipy import interpolate
+from scipy import interpolate
 from math import sqrt
 import matplotlib.pyplot as plt
 import io
