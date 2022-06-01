@@ -12,6 +12,7 @@ from metodos.metodosNumericos.cap2.metodos import eliminaiconGauss as eg
 from metodos.metodosNumericos.cap2.metodos import jacobi as jb
 from metodos.metodosNumericos.cap2.metodos import seidel as se
 from metodos.metodosNumericos.cap2.metodos import SOR as sor
+from metodos.metodosNumericos.cap2.metodos import pivoteos as piv
 
 
 # Create your views here.
@@ -228,6 +229,22 @@ def SOR(request):
             print('dejaste un espacio vacio')
             msg="dejaste un espacio vacio" 
     return render(request, 'sistemaDeEcua/SOR.html',{'msg':msg})
+
+def pivoteos(request):
+    msg=None
+    mata=request.POST.get('matA')
+    vecb=request.POST.get('vecb')
+    tipo_piv=request.POST.get('piv')
+    if mata!=None and vecb!=None and tipo_piv!=None:
+        if mata!="" and vecb!="" and tipo_piv!="":
+            try:
+                msg=piv(mata,vecb,tipo_piv)
+            except:
+                msg='ingresaste mal un dato'
+        else:
+            print('dejaste un espacio vacio')
+            msg="dejaste un espacio vacio" 
+    return render(request, 'sistemaDeEcua/pivoteos.html',{'msg':msg})
 
 def vandermonde(request):
     msg=None

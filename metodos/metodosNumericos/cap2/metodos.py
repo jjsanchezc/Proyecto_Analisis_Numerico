@@ -179,12 +179,125 @@ def SOR(mata,termb,x0,tol,w):
         tempMapIterData.clear()
     return msg        
 
-def pivoteos():
+def pivoteos(mata,vecb,tipo_piv):
     #aca llama a ambos
-    pass
-def pivTotal():
-    pass
-def pivParcial():
-    pass
+    if tipo_piv=='1':
+        return pivParcial(mata,vecb)
+    elif tipo_piv=='2':
+        return pivTotal(mata,vecb)
+    else:
+        return 'opcion de pivoteo no valida'
+    
+def pivTotal(mata,vecb):
+    tableListData = []
+    tempMapIterData = {}
+
+    a = mata
+    a = json.loads(a)
+    a = array(a, float)
+    b = vecb
+    b = json.loads(b)
+    b = array(b, float)
+
+    msg=None
+    n = len(b)
+    x = zeros(n, float)
+
+    #first loop specifys the fixed row
+    for k in range(n-1):
+        if fabs(a[k,k]) < 1.0e-12:
+            for i in range(k+1, n):
+                if fabs(a[i,k]) > fabs(a[k,k]):
+                    a[[k,i]] = a[[i,k]]
+                    b[[k,i]] = b[[i,k]]
+                    
+                    break
+
+    #applies the elimination below the fixed row
+        for i in range(k+1,n):
+            if a[i,k] == 0:continue
+            factor = a[k,k]/a[i,k]
+            for j in range(k,n):
+                a[i,j] = a[k,j] - a[i,j]*factor
+                
+                #we also calculate the b vector of each row     
+
+
+    x[n-1] = b[n-1] / a[n-1, n-1]
+    
+    for i in range(n-2, -1, -1):
+        sum_ax = 0
+    
+        for j in range(i+1, n):
+            sum_ax += a[i,j] * x[j]
+            
+        x[i] = (b[i] - sum_ax) / a[i,i]
+    cad = ""
+    asd = Funcion.to_string(x)
+    amd  = asd.split('\n')
+    for i in range(0, len(x), 1):
+        cad = f"x{i} ="
+        amdd = amd[i]
+        
+        tempMapIterData['xi'] = str(cad)
+        tempMapIterData['x'] = str(amdd)
+        tableListData.append(tempMapIterData.copy())
+        tempMapIterData.clear()
+    for i in tableListData:
+        print (i)
+    msg=str(x)
+    return msg
+
+        
+
+
+def pivParcial(mata,vecb):
+    tableListData = []
+    tempMapIterData = {}
+
+    a = mata
+    a = json.loads(a)
+    b = vecb
+    b = json.loads(b)
+
+    Ma = np.append(a, b, axis=1)
+    n = len(Ma)
+    msg=None
+    for k in range(0, n - 1, 1):
+        columna = abs(Ma[k:, k])
+        dondeMax = np.argmax(columna)
+        if dondeMax != 0:
+            temporal = np.copy(Ma[k, :])
+            Ma[k, :] = Ma[dondeMax + k, :]
+            Ma[dondeMax + k, :] = temporal
+        for i in range(k + 1, n, 1):
+
+            if Ma[k][k] != 0:
+                mult = Ma[i][k] / Ma[k][k]
+            else:
+                msg='pivote en 0'
+                for i in tableListData:
+                    print(i)
+                return msg
+
+            for j in range(k, n + 1, 1):
+                Ma[i][j] = Ma[i][j] - (mult * Ma[k][j])
+    
+    x = Funcion.sust_regre(Ma)
+    amd  = x.split('\n')
+    for i in range(len(Ma)):
+        cad = f"x{i} ="
+        if i<len(amd):
+            amdd = amd[i]
+            tempMapIterData['xi'] = str(cad)
+            tempMapIterData['x'] = str(amdd)
+            tableListData.append(tempMapIterData.copy())
+            
+            tempMapIterData.clear()
+    
+    for i in tableListData:
+        print(i)
+    msg=str(x)
+    return msg
 
 
