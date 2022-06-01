@@ -1,6 +1,13 @@
 <h1>Solución por el método de Punto fijo</h1>
 
 <body>
+  {% if msg %}
+      <p>{{ msg }}</p>
+
+      <form method ="GET" >
+        <button href="metodosNoLineal/puntoFijo.html">Volver</button>
+    </form> 
+    {% else %}
     <form enctype="multipart/form-data" method="post"> 
         {% csrf_token %}
      
@@ -53,9 +60,9 @@
           <div class="col-sm-10">
             <button type="submit" class="btn btn-primary">Calcular</button>
            </div>
-      </div>
-        
+      </div> 
     </form>
+    {% endif %}
     
     <form method ="GET" action="/">
         <button href="home.html">Menú Principal</button>

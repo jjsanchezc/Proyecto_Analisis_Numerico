@@ -1,6 +1,13 @@
 <h1>Solución por el método de Regla falsa</h1>
 
 <body>
+  {% if msg %}
+      <p>{{ msg }}</p>
+
+      <form method ="GET" >
+        <button href="metodosNoLineal/reglaFalsa.html">Volver</button>
+    </form> 
+    {% else %}
     <form enctype="multipart/form-data" method="post"> 
         {% csrf_token %}
      
@@ -55,6 +62,7 @@
            </div>
       </div>
     </form>
+    {% endif %}
 
     <form method ="GET" action="/">
         <button href="home.html">Menú Principal</button>

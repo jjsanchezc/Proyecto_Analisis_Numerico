@@ -1,6 +1,13 @@
 <h1>Solución por el método de Raices múltiples</h1>
 
 <body>
+  {% if msg %}
+      <p>{{ msg }}</p>
+
+      <form method ="GET" >
+        <button href="metodosNoLineal/raicesMult.html">Volver</button>
+    </form> 
+    {% else %}
     <form enctype="multipart/form-data" action=''method="POST"> 
         {% csrf_token %}
         <div class="form-group row">
@@ -45,6 +52,7 @@
              </div>
         </div>
     </form>
+    {% endif %}
 
     <form method ="GET" action="/">
         <button href="home.html">Menú Principal</button>
