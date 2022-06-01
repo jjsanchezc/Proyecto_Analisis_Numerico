@@ -55,6 +55,8 @@ def jacobi(a,b,x0,tol,n):
     msg=None
     if max(abs(eigvals(t))) > 1:
         msg='la funcion no converge'
+        for i in tableListData:
+            print(i)
         return msg
         
     if x0 is None:
@@ -84,8 +86,57 @@ def jacobi(a,b,x0,tol,n):
         tempMapIterData.clear()
     return msg 
 
-def seidel():
-    pass
+def seidel(mata,termb,x0,tol,niter):
+    
+    tableListData = []
+    tempMapIterData = {}
+    # todo: Generar tabla
+
+    a = json.loads(mata)
+    x0 = json.loads(x0)
+    b = json.loads(termb)
+    n = int(niter)
+    tol = float(tol)
+
+    l = -np.tril(a, -1)
+    u = -np.triu(a, 1)
+    d = a + l + u
+    t = np.matmul(inv(d - l), u)
+    c = np.matmul(inv(d - l), b)
+
+    msg=None
+    if max(abs(eigvals(t))) > 1:
+        msg='la funcion no converge'
+        for i in tableListData:
+            print(i)
+        return msg
+        
+    if x0 is None:
+        x0 = []
+        for i in range(len(a)):
+            x0.append([0])
+    if tol is None:
+        tol = 10 ** -5
+
+    xn = np.matmul(t, x0) + c
+    cont = 0
+    e = 1000
+    while (x0 != xn).all() and cont < n and e > tol:
+        x0 = xn
+        xn = np.matmul(t, x0) + c
+        cont += 1
+        e = norm(x0 - xn)
+        tempMapIterData['iteracion'] = str(cont)
+        tempMapIterData['x0'] = str(x0)
+        tempMapIterData['xn'] = str(xn)
+        tempMapIterData['E'] = str(e)
+        tableListData.append(tempMapIterData.copy())
+        
+        for i in tableListData:
+            print(i)
+            msg=i
+        tempMapIterData.clear()
+    return msg
 
 def SOR():
     pass

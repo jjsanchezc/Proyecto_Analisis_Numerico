@@ -10,6 +10,7 @@ from metodos.metodosNumericos.Funcion import Funcion
 from metodos.metodosNumericos.cap1.metodos import raicesmultiples as rm
 from metodos.metodosNumericos.cap2.metodos import eliminaiconGauss as eg
 from metodos.metodosNumericos.cap2.metodos import jacobi as jb
+from metodos.metodosNumericos.cap2.metodos import seidel as se
 
 
 # Create your views here.
@@ -199,7 +200,7 @@ def gaussSeidel(request):
     if termb!=None and x0!=None and tol!=None and mata!=None and niter!=None:
         if termb!="" and x0!="" and tol!="" and mata!="" and niter!="":
             try:
-                msg=pm.Seidel(mata,termb,x0,tol,niter)
+                msg=se(mata,termb,x0,tol,niter)
             except:
                 #print('error en Gauss Seidel')
                 msg='ingresaste mal un dato'

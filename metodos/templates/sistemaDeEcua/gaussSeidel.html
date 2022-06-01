@@ -1,10 +1,15 @@
 <h1>Solución por el método Gauss-Seidel</h1>
 
 <body>
+  {% if msg %}
+    <p>{{ msg }}</p>
+
+    <form method ="GET" >
+      <button href="sistemasDeEcua/gaussSeidel.html">Volver</button>
+    </form> 
+{% else %}
     <form enctype="multipart/form-data" method="post"> 
         {% csrf_token %}
-     
-        
         <div class="form-group row">
             <label for="" class="col-sm-2 col-form-label">Matriz A:</label>
             <div class="col-sm-10">
@@ -47,7 +52,7 @@
       </div>
     
     </form>
-
+    {% endif %}
     <form method ="GET" action="/">
         <button href="home.html">Menú Principal</button>
     </form> 
