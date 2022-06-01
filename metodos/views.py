@@ -37,7 +37,7 @@ def bisec(request):
                 msg='ingresaste mal un dato'
         else:
             print('dejaste un espacio vacio')
-            msg="dejaste un espacio vacioooooo"
+            msg="dejaste un espacio vacio"
     return render(request,'metodosNoLineal/biseccion.html',{'msg':msg})
 
 def newton(request):
@@ -58,7 +58,7 @@ def newton(request):
                 #print('error en Newton')
         else:
             print('dejaste un espacio vacio')
-            msg="dejaste un espacio vacioooooo"
+            msg="dejaste un espacio vacio"
     return render(request, 'metodosNoLineal/newton.html',{'msg':msg})
 
 def puntoFijo(request):
@@ -80,7 +80,7 @@ def puntoFijo(request):
                 #print('error punto fijo')
         else:
             print('dejaste un espacio vacio')
-            msg="dejaste un espacio vacioooooo"
+            msg="dejaste un espacio vacio"
     return render(request, 'metodosNoLineal/puntoFijo.html',{'msg':msg})
 
 def reglaFalsa(request):
@@ -101,7 +101,7 @@ def reglaFalsa(request):
                 msg='ingresaste mal un dato'
         else:
             print('dejaste un espacio vacio')
-            msg="dejaste un espacio vacioooooo"
+            msg="dejaste un espacio vacio"
     return render(request, 'metodosNoLineal/reglaFalsa.html',{'msg':msg})
 
 def secante(request):
@@ -121,13 +121,15 @@ def secante(request):
                 msg='ingresaste mal un dato'
         else:
             print('dejaste un espacio vacio')
-            msg="dejaste un espacio vacioooooo"
+            msg="dejaste un espacio vacio"
     return render(request, 'metodosNoLineal/secante.html',{'msg':msg})
 
 def raicesMult(request):
-    return render(request, 'metodosNoLineal/raicesMult.html')
+    msg=None
+    return render(request, 'metodosNoLineal/raicesMult.html',{'msg':msg})
 
 def gauss(request):
+    msg=None
     A=request.POST.get('matA')
     b=request.POST.get('vecb')
     n=request.POST.get('normaV')
@@ -135,13 +137,19 @@ def gauss(request):
     z=request.POST.get('normae')
     
     if b!=None and n!=None and Piv!=None and A!=None and z!=None:
-        try:
-            pm.GaussPiv(A,b,b,Piv,z)
-        except:
-            print('error en Gauss')
-    return render(request, 'sistemaDeEcua/gauss.html')
+        if b!="" and n!="" and Piv!="" and A!="" and z!="":
+            try:
+                msg=pm.GaussPiv(A,b,b,Piv,z)
+            except:
+                #print('error en Gauss')
+                msg='ingresaste mal un dato'
+        else:
+          print('dejaste un espacio vacio')
+          msg="dejaste un espacio vacio"
+    return render(request, 'sistemaDeEcua/gauss.html',{'msg':msg})
 
 def jacobi(request):
+    msg=None
     mata=request.POST.get('mata')
     termb=request.POST.get('termb')
     x0=request.POST.get('x0')
@@ -149,13 +157,19 @@ def jacobi(request):
     niter=request.POST.get('niter')
     
     if termb!=None and x0!=None and tol!=None and mata!=None and niter!=None:
-        try:
-            pm.jacobi(mata,termb,x0,tol,niter)
-        except:
-            print('error en Jacobi')
-    return render(request, 'sistemaDeEcua/jacobi.html')
+        if termb!="" and x0!="" and tol!="" and mata!="" and niter!="":
+            try:
+                msg=pm.jacobi(mata,termb,x0,tol,niter)
+            except:
+                #print('error en Jacobi')
+                msg='ingresaste mal un dato'
+        else:
+          print('dejaste un espacio vacio')
+          msg="dejaste un espacio vacio"
+    return render(request, 'sistemaDeEcua/jacobi.html',{'msg':msg})
 
 def gaussSeidel(request):
+    msg=None
     mata=request.POST.get('mata')
     termb=request.POST.get('termb')
     x0=request.POST.get('x0')
@@ -163,13 +177,19 @@ def gaussSeidel(request):
     niter=request.POST.get('niter')
     
     if termb!=None and x0!=None and tol!=None and mata!=None and niter!=None:
-        try:
-            pm.Seidel(mata,termb,x0,tol,niter)
-        except:
-            print('error en Gauss Seidel')
-    return render(request, 'sistemaDeEcua/gaussSeidel.html')
+        if termb!="" and x0!="" and tol!="" and mata!="" and niter!="":
+            try:
+                msg=pm.Seidel(mata,termb,x0,tol,niter)
+            except:
+                #print('error en Gauss Seidel')
+                msg='ingresaste mal un dato'
+        else:
+          print('dejaste un espacio vacio')
+          msg="dejaste un espacio vacio" 
+    return render(request, 'sistemaDeEcua/gaussSeidel.html',{'msg':msg})
 
 def SOR(request):
+    msg=None
     mata=request.POST.get('mata')
     termb=request.POST.get('termb')
     x0=request.POST.get('x0')
@@ -178,20 +198,28 @@ def SOR(request):
     w=request.POST.get('w')
     
     if termb!=None and x0!=None and tole!=None and mata!=None and itera!=None and w!=None:
-        try:
-            pm.SOR(mata,termb,x0,tole,itera,w)
-        except:
-            print('error en SOR')
-    return render(request, 'sistemaDeEcua/SOR.html')
+        if termb!="" and x0!="" and tole!="" and mata!="" and itera!="" and w!="":
+            try:
+                msg=pm.SOR(mata,termb,x0,tole,itera,w)
+            except:
+                #print('error en SOR')
+                msg='ingresaste mal un dato'
+        else:
+          print('dejaste un espacio vacio')
+          msg="dejaste un espacio vacio" 
+    return render(request, 'sistemaDeEcua/SOR.html',{'msg':msg})
 
 def vandermonde(request):
-    return render(request, 'interpolacion/vandermonde.html')
+    msg=None
+    return render(request, 'interpolacion/vandermonde.html',{'msg':msg})
 
 def spline(request):
-    return render(request, 'interpolacion/spline.html')
+    msg=None
+    return render(request, 'interpolacion/spline.html',{'msg':msg})
 
 def newtonIn(request):
-    return render(request, 'interpolacion/newtonIn.html')
+    msg=None
+    return render(request, 'interpolacion/newtonIn.html',{'msg':msg})
 
 
 
