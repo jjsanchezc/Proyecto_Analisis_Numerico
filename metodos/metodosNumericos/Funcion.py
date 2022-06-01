@@ -1,15 +1,19 @@
 import base64
+from configparser import Interpolation
+from symtable import Symbol
 from metodos.utils import get_graph
 from sympy import *
 from numpy import linspace
-import matplotlib.pyplot as mpl
 import io
 import numpy as np
+import matplotlib.pyplot as mpl
 import numpy as numpy
 import sympy as sym
-x = Symbol('x')
-from scipy import interpolate
 from io import BytesIO
+#x = Symbol('x')
+#from scipy import interpolate
+
+
 
 class Funcion:
     f = 0
@@ -107,7 +111,7 @@ class Funcion:
 
     def f(x,x_points, y_points):
         tck = interpolate.splrep(x_points, y_points)
-        return interpolate.splev(x, tck)
+        return Interpolation.splev(x, tck)
     
     def get_graph():
         buffer= BytesIO()
