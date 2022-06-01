@@ -266,6 +266,17 @@ def vandermonde(request):
 
 def newtonIn(request):
     msg=None
+    mata=request.POST.get('mata')
+    matb=request.POST.get('matb')
+    if mata!=None and matb!=None :
+        if mata!="" and matb!="":
+            try:
+                msg=ni(mata,matb)
+            except:
+                msg='ingresaste mal un dato'
+        else:
+            print('dejaste un espacio vacio')
+            msg="dejaste un espacio vacio" 
     return render(request, 'interpolacion/newtonIn.html',{'msg':msg})
 
 def spline(request):

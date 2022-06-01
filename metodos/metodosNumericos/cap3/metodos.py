@@ -64,8 +64,46 @@ def vandermonde(mata,matb):
     return msg
 
 
-def newtonInter():
-    pass
+def newtonInter(a,b):
+    msg=None
+    tableListData = []
+    tempMapIterData = {}
+
+    x = a
+    x= json.loads(x)
+    
+    y = b
+    y = json.loads(y)
+
+    n = len(y)
+    coef = np.zeros([n, n])
+    # the first column is y
+    coef[:,0] = y
+    
+    for j in range(1,n):
+        for i in range(n-j):
+            coef[i][j] = \
+        (coef[i+1][j-1] - coef[i][j-1]) / (x[i+j]-x[i])
+        tempMapIterData['Resultado'] = str(coef)
+        tableListData.append(tempMapIterData.copy())
+        tempMapIterData.clear()        
+
+    xp = np.linspace(min(x),max(x))
+    p  = np.polyfit(x,y,len(x)-1)
+    yp = np.polyval(p,xp)
+
+    plt.figure()
+    plt.plot(xp,yp,'b-', label = 'interpolant Newton')
+    plt.plot( x, y,'ro', label = 'points')
+    
+    buf = io.BytesIO()
+    plt.savefig(buf)
+    buf.seek(0)
+    img = buf.read()
+    msg=str(coef)
+    for i in tableListData:
+        print(i)
+    return msg
 
 def spline(a,b,tipo):
     

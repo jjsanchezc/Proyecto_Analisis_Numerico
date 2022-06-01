@@ -1,6 +1,14 @@
 <h1>Solución por el método Newton interpolante</h1>
 
 <body>
+
+    {% if msg %}
+      <p>{{ msg }}</p>
+
+      <form method ="GET" >
+        <button href="interpolacion/netonIn.html">Volver</button>
+    </form> 
+    {% else %}
     <form enctype="multipart/form-data" method="post"> 
         {% csrf_token %}
      
@@ -26,7 +34,7 @@
         </div>
     </form>
 
-
+    {% endif %}
     <form method ="GET" action="/">
         <button href="home.html">Menú Principal</button>
     </form> 
