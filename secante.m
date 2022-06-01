@@ -54,6 +54,8 @@ else
    n=c;
    msj=sprintf('Fracasó en %f iteraciones \n',niter) 
 end
-        
+   %Graficamos la función
+        ezplot(f)
+        grid on        
 end
     

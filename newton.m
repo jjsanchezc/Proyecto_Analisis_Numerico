@@ -67,4 +67,7 @@ function [msj,n,xn,fm,dfm,E] = Newton(f,x0,Tol,niter,Terr)
            disp(D)
     
         end
+        %Graficamos la función
+        ezplot(f)
+        grid on
 end

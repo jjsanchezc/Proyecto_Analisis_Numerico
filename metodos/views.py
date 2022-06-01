@@ -4,6 +4,12 @@ import matlab
 from django.shortcuts import render
 from metodos.metodosNumericos import ConnectPyMat as pm
 
+import numpy as np
+import base64
+from metodos.metodosNumericos.Funcion import Funcion
+from metodos.metodosNumericos.cap1.metodos import raicesmultiples as rm
+from metodos.metodosNumericos.cap2.metodos import eliminaiconGauss as eg
+
 
 # Create your views here.
 def home(request):
@@ -126,26 +132,39 @@ def secante(request):
 
 def raicesMult(request):
     msg=None
-    return render(request, 'metodosNoLineal/raicesMult.html',{'msg':msg})
+    img=None
+    fun=request.POST.get('fun')
+    x0=request.POST.get('x0')
+    tol=request.POST.get('tol')
+    niter=request.POST.get('niter')
+    if x0!=None and tol!=None and  niter!=None and fun!=None:
+        if x0!="" and tol!="" and niter!="" and fun!="":
+            try:
+                msg=rm(fun,x0,tol,niter,1)
+                #img=raicesmultiples(fun,x0,tol,niter,0)
+            except:
+                msg='ingresaste mal un dato'
+        else:
+            print('dejaste un espacio vacio')
+            msg="dejaste un espacio vacio"
+    return render(request, 'metodosNoLineal/raicesMult.html',{'msg':msg,'foto':img})
 
 def gauss(request):
     msg=None
     A=request.POST.get('matA')
     b=request.POST.get('vecb')
-    n=request.POST.get('normaV')
-    Piv=request.POST.get('piv')
-    z=request.POST.get('normae')
+
     
-    if b!=None and n!=None and Piv!=None and A!=None and z!=None:
-        if b!="" and n!="" and Piv!="" and A!="" and z!="":
+    if b!=None and A!=None:
+        if b!="" and A!="":
             try:
-                msg=pm.GaussPiv(A,b,b,Piv,z)
+                msg=eg(A,b)
             except:
-                #print('error en Gauss')
+                print('error en Gauss')
                 msg='ingresaste mal un dato'
         else:
-          print('dejaste un espacio vacio')
-          msg="dejaste un espacio vacio"
+            print('dejaste un espacio vacio')
+            msg="dejaste un espacio vacio"
     return render(request, 'sistemaDeEcua/gauss.html',{'msg':msg})
 
 def jacobi(request):
@@ -164,8 +183,8 @@ def jacobi(request):
                 #print('error en Jacobi')
                 msg='ingresaste mal un dato'
         else:
-          print('dejaste un espacio vacio')
-          msg="dejaste un espacio vacio"
+            print('dejaste un espacio vacio')
+            msg="dejaste un espacio vacio"
     return render(request, 'sistemaDeEcua/jacobi.html',{'msg':msg})
 
 def gaussSeidel(request):
@@ -184,8 +203,8 @@ def gaussSeidel(request):
                 #print('error en Gauss Seidel')
                 msg='ingresaste mal un dato'
         else:
-          print('dejaste un espacio vacio')
-          msg="dejaste un espacio vacio" 
+            print('dejaste un espacio vacio')
+            msg="dejaste un espacio vacio" 
     return render(request, 'sistemaDeEcua/gaussSeidel.html',{'msg':msg})
 
 def SOR(request):
@@ -205,8 +224,8 @@ def SOR(request):
                 #print('error en SOR')
                 msg='ingresaste mal un dato'
         else:
-          print('dejaste un espacio vacio')
-          msg="dejaste un espacio vacio" 
+            print('dejaste un espacio vacio')
+            msg="dejaste un espacio vacio" 
     return render(request, 'sistemaDeEcua/SOR.html',{'msg':msg})
 
 def vandermonde(request):
@@ -224,4 +243,5 @@ def newtonIn(request):
 
 
 
- 
+
+
