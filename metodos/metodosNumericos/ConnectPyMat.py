@@ -1,5 +1,7 @@
+from sys import stdout
 import matlab.engine
 eng = matlab.engine.start_matlab()
+import io
 
 
 def busIncr(x0,delta,niter):#mas tarde defino los parametros
@@ -14,15 +16,17 @@ def busIncr(x0,delta,niter):#mas tarde defino los parametros
 def bisecc(xi,xs,Tol,niter,fun,err):
     #listo
     print("Respuesta: ")
+    eerr = io.StringIO()
+    out = io.StringIO()
     ans=eng.biseccion(xi,xs,Tol,niter,fun,err)
-    print(ans)
     print("------------------------")
-    return ans 
+    return ans
     
 def Newton(f,x0,Tol,niter,Terr):
     #listo
     print("Respuesta: ")
     print(eng.Newton(f,x0,Tol,niter,Terr))
+    
     print("------------------------")  
    
 def Secante(x0,x1,tol,niter,f):

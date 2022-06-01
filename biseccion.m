@@ -1,7 +1,7 @@
 %Bisección: se ingresa el valor inicial y final del intervalo (xi, xs), la tolerancia del error (Tol) y el màximo nùmero de iteraciones (niter) 
 
 
-function [s,E,fm] = Biseccion(xi,xs,Tol,niter,f,Terr)
+function [msj,s,E,fm] = Biseccion(xi,xs,Tol,niter,f,Terr)
 syms x
     f=str2sym(f)
     xi=str2double(xi);
@@ -16,11 +16,11 @@ x = linspace(xi,xs);
     if fi==0
         s=xi;
         E=0;
-        fprintf('%f es raiz de f(x)',xi)
+        msj=sprintf('%f es raiz de f(x)',xi)
     elseif fs==0
         s=xs;
         E=0;
-        fprintf('%f es raiz de f(x)',xs)
+        msj=printf('%f es raiz de f(x)',xs)
     elseif fs*fi<0
         c=0;
         xm=(xi+xs)/2;
@@ -52,10 +52,10 @@ x = linspace(xi,xs);
         end
         if fe==0 && c==0
            s=xm;
-           fprintf('%f es raiz de f(x)\n',xm)
+           msj=sprintf('%f es raiz de f(x)\n',xm)
         elseif fe==0
             s=xm;
-           fprintf('%f es raiz de f(x)\n',xm)
+           msj=sprintf('%f es raiz de f(x)\n',xm)
            disp(['   n       Xa        F         E'])
             D= [N' xa' fm' E'];
             disp(D)
@@ -65,18 +65,16 @@ x = linspace(xi,xs);
            disp(['     n        Xa         F         E'])
              D=[N' xa' fm' E'];
              disp(D)
-             xm=5
-            fprintf('%f esta es la RESPUESTAAAAAA\n',xm)
-           
+            msj=sprintf('%f es una aproximacion de una raiz de f(x) con una tolerancia= %f\n',xm,Tol)
         else 
            s=xm;
-           fprintf('Fracasó en %f iteraciones \n',niter)
+           msj=sprintf('Fracasó en %f iteraciones \n',niter)
            disp('      n        Xa          F          E')
             D= [N' xa' fm' E'];
             disp(D)
         end
     else
-       fprintf('El intervalo es inadecuado\n')         
+       msj=sprintf('El intervalo es inadecuado\n')         
     end
     p = eval(subs(f,x));
     
@@ -87,5 +85,4 @@ x = linspace(xi,xs);
     %line([0,0], ylim;, 'Color', 'k', 'LineWidth', 2); % Draw line for Y axis.
     line(xlim, [0,0], 'Color', 'k', 'LineWidth', 0.5); % Draw line for X axis.
     scatter(s,eval(subs(f,s)),'.')   
-    
 end
