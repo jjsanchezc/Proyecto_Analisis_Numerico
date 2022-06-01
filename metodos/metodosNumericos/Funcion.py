@@ -76,7 +76,7 @@ class Funcion:
             if i == len(x)-1:
                  cadena = cadena + str(x[i])
             else:
-                cadena = cadena + str(x[i]) + "\n"
+                cadena = cadena + str(x[i]) + "     "
         return cadena
 
     def to_string(x):

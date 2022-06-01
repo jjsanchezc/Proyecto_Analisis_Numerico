@@ -9,6 +9,7 @@ import base64
 from metodos.metodosNumericos.Funcion import Funcion
 from metodos.metodosNumericos.cap1.metodos import raicesmultiples as rm
 from metodos.metodosNumericos.cap2.metodos import eliminaiconGauss as eg
+from metodos.metodosNumericos.cap2.metodos import jacobi as jb
 
 
 # Create your views here.
@@ -178,7 +179,7 @@ def jacobi(request):
     if termb!=None and x0!=None and tol!=None and mata!=None and niter!=None:
         if termb!="" and x0!="" and tol!="" and mata!="" and niter!="":
             try:
-                msg=pm.jacobi(mata,termb,x0,tol,niter)
+                msg=jb(mata,termb,x0,tol,niter)
             except:
                 #print('error en Jacobi')
                 msg='ingresaste mal un dato'

@@ -24,16 +24,59 @@ def eliminaiconGauss(a,b):
                 return msg
             for j in range(k, n + 1, 1):
                 Ma[i][j] = Ma[i][j] - (mult * Ma[k][j])
-                tempMapIterData['Resultante'] = str(Funcion.sust_regre(Ma))
+                tempMapIterData[''] = str(Funcion.sust_regre(Ma))
                 tableListData.append(tempMapIterData.copy())
                 tempMapIterData.clear()
         
     x = Funcion.sust_regre(Ma)
-    msg='cre creo que es error'
+    for i in tableListData:
+        print(i)
+    
+    msg=str(x)
     return msg
 
-def jacobi():
-    pass
+def jacobi(a,b,x0,tol,n):
+    tableListData = []
+    tempMapIterData = {}
+
+    a = json.loads(a)
+    x0 = json.loads(x0)
+    b = json.loads(b)
+    n = int(n)
+    tol = float(tol)
+
+
+    l = -np.tril(a, -1)
+    u = -np.triu(a, 1)
+    d = a + l + u
+    t = np.matmul(inv(d), l + u)
+    c = np.matmul(inv(d), b)
+    if max(abs(eigvals(t))) > 1:
+        msg='la funcion no converge'
+        return msg
+        
+    if x0 is None:
+        x0 = []
+        for i in range(len(a)):
+            x0.append([0])
+    if tol is None:
+        tol = 10 ** -5
+    xn = np.matmul(t, x0) + c
+    cont = 0
+    e = 1000
+    while (x0 != xn).all() and cont < n and e > tol:
+        x0 = xn
+        xn = np.matmul(t, x0) + c
+        cont += 1
+        e = norm(x0 - xn)
+        tempMapIterData['iteracion'] = str(cont)
+        tempMapIterData['x0'] = str(x0)
+        tempMapIterData['xn'] = str(xn)
+        tempMapIterData['E'] = str(e)
+        tableListData.append(tempMapIterData.copy())
+        for i in tableListData:
+            print(i)
+        tempMapIterData.clear()
 
 def seidel():
     pass
