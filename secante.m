@@ -1,4 +1,4 @@
-function [s,xn,n,fn,E] = Secante(x0,x1,tol,niter,f)
+function [msj,s,xn,n,fn,E] = Secante(x0,x1,tol,niter,f)
 syms x
     f=str2sym(f)
     x0=str2double(x0);
@@ -34,25 +34,25 @@ end
 if fe==0;
     s=xn1;
     n=c;
-    fprintf('%f es raiz de f(x) \n',xn1)
+    msj=sprintf('%f es raiz de f(x) \n',xn1)
     disp('      n        X1          F          E')
             D= [N' xn' fn' E'];
             disp(D)
             elseif error<Tol
            s=xn1;
            n=c;
-           fprintf('%f es una aproximación de una raiz de f(x) con una tolerancia= %f \n',xn1,Tol)
+           msj=sprintf('%f es una aproximación de una raiz de f(x) con una tolerancia= %f \n',xn1,Tol)
             disp('      n        X1          F          E')
             D= [N' xn' fn' E'];
             disp(D)
 elseif fn-fm==0
        s=xn1;
        n=c;
-       fprintf('%f es una posible raiz múltiple de f(x) \n',xn1)
+       msj=sprintf('%f es una posible raiz múltiple de f(x) \n',xn1)
 else 
    s=xn1;
    n=c;
-   fprintf('Fracasó en %f iteraciones \n',niter) 
+   msj=sprintf('Fracasó en %f iteraciones \n',niter) 
 end
         
 end

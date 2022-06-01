@@ -115,7 +115,7 @@ def secante(request):
     if x0!=None and x1!=None and  tol!=None and  niter!=None and fun!=None:
         if x0!="" and x1!="" and  tol!="" and  niter!="" and fun!="":
             try:
-                pm.Secante(x0,x1,tol,niter,fun)
+                msg=pm.Secante(x0,x1,tol,niter,fun)
             except:
                 print('error en secante')
                 msg='ingresaste mal un dato'
